@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "940004062086",
+    "project_id": "mdcomposer-flutter",
+    "storage_bucket": "mdcomposer-flutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:940004062086:android:2d8954e6ebf93220d3b207",
+        "android_client_info": {
+          "package_name": "com.example.md_composer_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "940004062086-069a7ogun0foq7cfmblvbv6h90q46odf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiS9RijZWldH301b80G1AS3YtFgl4GrhQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "940004062086-069a7ogun0foq7cfmblvbv6h90q46odf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "940004062086-pih2f12geu2a9lon5r6q1np1jd4eq6b1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.mdComposerFlutter"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
