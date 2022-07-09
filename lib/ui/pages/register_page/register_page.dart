@@ -9,7 +9,7 @@ import 'package:md_composer_flutter/utils/snackbar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../utils/labels.dart';
+import '../../../utils/labels.dart';
 
 class RegisterPage extends ConsumerWidget {
   RegisterPage({Key? key}) : super(key: key);

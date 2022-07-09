@@ -16,3 +16,4 @@ const String profileSigninInfoRouteName = 'profile-signin';
 const String subDetailsRouteName = 'shop-details';
 const String shoppingRouteName = 'shopping';
 const String signinInfoRouteName = 'signin';
+const String resetPasswordRouteName = 'reset-password';

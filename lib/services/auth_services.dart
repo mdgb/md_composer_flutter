@@ -120,4 +120,8 @@ class AuthViewModel extends ChangeNotifier {
   Future<void> logout() async {
     await _auth.signOut();
   }
+
+  Future<void> changePasswords() async {
+    await _auth.sendPasswordResetEmail(email: email);
+  }
 }

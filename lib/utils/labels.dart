@@ -34,4 +34,5 @@ class Labels {
   static const String subDetailsRouteName = 'shop-details';
   static const String shoppingRouteName = 'shopping';
   static const String signinInfoRouteName = 'signin';
+  static const String resetPassword = 'reset';
 }

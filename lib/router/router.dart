@@ -4,11 +4,12 @@ import 'package:go_router/go_router.dart';
 import 'package:md_composer_flutter/ui/splash_screen/splash_screen.dart';
 import 'package:md_composer_flutter/utils/constants.dart';
 
-import '../ui/error_page/error_page.dart';
-import '../ui/home_page/home_page.dart';
-import '../ui/login_page/login_page.dart';
-import '../ui/register_page/register_page.dart';
-import '../ui/welcome_page/welcome_page.dart';
+import '../ui/pages/error_page/error_page.dart';
+import '../ui/pages/home_page/home_page.dart';
+import '../ui/pages/login_page/login_page.dart';
+import '../ui/pages/register_page/register_page.dart';
+import '../ui/pages/reset_password_page/reset_password_page.dart';
+import '../ui/pages/welcome_page/welcome_page.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
   final router = RouterNotifier(ref);
@@ -32,7 +33,7 @@ class RouterNotifier extends ChangeNotifier {
           path: '/',
           pageBuilder: (context, state) => MaterialPage<void>(
             key: state.pageKey,
-            child: SplashPage(),
+            child: const SplashPage(),
           ),
         ),
         GoRoute(
@@ -55,6 +56,14 @@ class RouterNotifier extends ChangeNotifier {
           pageBuilder: (context, state) => MaterialPage<void>(
             key: state.pageKey,
             child: RegisterPage(),
+          ),
+        ),
+        GoRoute(
+          name: resetPasswordRouteName,
+          path: '/resetpassword',
+          pageBuilder: (context, state) => MaterialPage<void>(
+            key: state.pageKey,
+            child: ResetPasswordPage(),
           ),
         ),
         GoRoute(
