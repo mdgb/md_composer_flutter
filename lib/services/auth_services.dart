@@ -36,10 +36,10 @@ class AuthViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  String _confirmPassord = '';
-  String get confirmPassord => _confirmPassord;
-  set confirmPassord(String confirmPassord) {
-    _confirmPassord = confirmPassord;
+  String _confirmPassword = '';
+  String get confirmPassword => _confirmPassword;
+  set confirmPassword(String confirmPassword) {
+    _confirmPassword = confirmPassword;
     notifyListeners();
   }
 

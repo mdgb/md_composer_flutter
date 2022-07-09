@@ -7,6 +7,8 @@ import 'package:md_composer_flutter/utils/constants.dart';
 import '../ui/error_page/error_page.dart';
 import '../ui/home_page/home_page.dart';
 import '../ui/login_page/login_page.dart';
+import '../ui/register_page/register_page.dart';
+import '../ui/welcome_page/welcome_page.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
   final router = RouterNotifier(ref);
@@ -47,23 +49,22 @@ class RouterNotifier extends ChangeNotifier {
             child: LoginPage(),
           ),
         ),
-        // GoRoute(
-        //   name: createAccountRouteName,
-        //   path: '/register',
-        //   pageBuilder: (context, state) => MaterialPage<void>(
-        //     key: state.pageKey,
-        //     child: RegisterPage(),
-        //   ),
-        // ),
-        // GoRoute(
-        //   name: 'welcomeRouteName',
-        //   path: '/welocme',
-        //   pageBuilder: (context, state) => MaterialPage<void>(
-        //     key: state.pageKey,
-        //     child: WelcomePage(),
-        //   ),
-        // ),
-
+        GoRoute(
+          name: createAccountRouteName,
+          path: '/register',
+          pageBuilder: (context, state) => MaterialPage<void>(
+            key: state.pageKey,
+            child: RegisterPage(),
+          ),
+        ),
+        GoRoute(
+          name: 'welcomeRouteName',
+          path: '/welcome',
+          pageBuilder: (context, state) => MaterialPage<void>(
+            key: state.pageKey,
+            child: const WelcomePage(),
+          ),
+        ),
         GoRoute(
           name: homeRouteName,
           path: '/home/:tab(shop|cart|profile)',
