@@ -9,6 +9,7 @@ class WelcomePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
         backgroundColor: Colors.white,
+        appBar: AppBar(),
         body: SingleChildScrollView(
           child: Column(children: [
             const Text("WELCOME",
