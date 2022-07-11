@@ -1,9 +1,7 @@
-import 'dart:math';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-import 'cdm.dart';
+import 'cdm.dart' show CDM;
 
 class DrawerExpandableComponent extends StatefulWidget {
   const DrawerExpandableComponent({Key? key}) : super(key: key);
@@ -29,7 +27,11 @@ class _DrawerExpandableComponentState extends State<DrawerExpandableComponent> {
         CDM(title: 'Dash 2 - 2', icon: null, submenus: []),
       ]),
     ]),
-    const CDM(title: 'Category', icon: Icons.subscriptions, submenus: []),
+    const CDM(
+        title: 'Welcome',
+        icon: Icons.subscriptions,
+        url: '/welcome',
+        submenus: []),
     const CDM(title: 'XXX', icon: Icons.markunread_mailbox, submenus: []),
     const CDM(title: 'PIE', icon: Icons.pie_chart, submenus: [
       CDM(title: 'PIE 1', icon: Icons.pie_chart, submenus: []),
@@ -60,7 +62,7 @@ class _DrawerExpandableComponentState extends State<DrawerExpandableComponent> {
                   itemCount: menuItems.length,
                   itemBuilder: (BuildContext context, int index) {
                     final CDM menuItem = menuItems[index];
-                    return MenuItem(menuItem, index, depth, [index]);
+                    return MenuItem(context, menuItem, index, depth, [index]);
                   },
                 ),
               ],
@@ -69,7 +71,7 @@ class _DrawerExpandableComponentState extends State<DrawerExpandableComponent> {
     );
   }
 
-  Widget MenuItem(CDM item, int index, int depth, originPath) {
+  Widget MenuItem(context, CDM item, int index, int depth, originPath) {
     // print(
     // 'ITEM ${item.title} hasSubmenuItems ${item.submenus.length} depth $depth originPath: $originPath');
     final path = new List.from(originPath).join().toString();
@@ -87,29 +89,51 @@ class _DrawerExpandableComponentState extends State<DrawerExpandableComponent> {
                 decoration: BoxDecoration(
                   color: isSelected ? Colors.white10 : Colors.transparent,
                 ),
-                child: Text(
-                  item.title,
-                  style: TextStyle(color: textColor),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(item.icon, color: textColor),
+                        SizedBox(width: 8),
+                        Text(
+                          item.title,
+                          style: TextStyle(color: textColor),
+                        ),
+                      ],
+                    ),
+                    if (item.submenus.length > 0) ...[
+                      Icon(
+                          isSelected
+                              ? Icons.arrow_drop_up
+                              : Icons.arrow_drop_down,
+                          color: textColor)
+                    ]
+                  ],
                 ),
               ),
               onTap: () {
                 setState(() {
-                  selectedPath = path;
-                  // print(
-                  //     'SET selectedPath: path = $path | depth = $depth | index = $index ');
+                  selectedPath == path
+                      ? selectedPath = ''
+                      : selectedPath = path;
                 });
+                if (item.url != null) {
+                  GoRouter.of(context).go(item.url.toString());
+                }
               }),
         ),
         Container(
-          child: getSubmenu(item, index, depth, originPath, isSelected),
+          child:
+              getSubmenu(context, item, index, depth, originPath, isSelected),
         )
       ],
     );
     // return Container(child: Text(item.title));
   }
 
-  Widget? getSubmenu(
-      CDM item, int index, int depth, List originPath, bool isSelected) {
+  Widget? getSubmenu(context, CDM item, int index, int depth, List originPath,
+      bool isSelected) {
     final bool hasSubmenu = item.submenus.isNotEmpty;
     final bool isValidSubmenu = hasSubmenu && isSelected;
     // TODO: check if parent is selected
@@ -128,7 +152,7 @@ class _DrawerExpandableComponentState extends State<DrawerExpandableComponent> {
           } else {
             originPath.add(index);
           }
-          return MenuItem(menuItem, index, depth, originPath);
+          return MenuItem(context, menuItem, index, depth, originPath);
         },
       );
     }

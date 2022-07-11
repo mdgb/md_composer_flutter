@@ -71,7 +71,8 @@ class RouterNotifier extends ChangeNotifier {
           path: '/welcome',
           pageBuilder: (context, state) => MaterialPage<void>(
             key: state.pageKey,
-            child: const WelcomePage(),
+            child:
+                BaseTemplate(page: const WelcomePage(), pageTitle: 'Welcome'),
           ),
         ),
         GoRoute(
@@ -80,7 +81,7 @@ class RouterNotifier extends ChangeNotifier {
           pageBuilder: (context, state) {
             return MaterialPage<void>(
               key: state.pageKey,
-              child: BaseTemplate(page: const HomePage()),
+              child: BaseTemplate(page: const HomePage(), pageTitle: 'Home'),
             );
           },
         ),

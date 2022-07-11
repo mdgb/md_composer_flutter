@@ -5,14 +5,18 @@ import 'package:md_composer_flutter/ui/widget_library/drawers/drawer_expandable/
 
 class BaseTemplate extends ConsumerWidget {
   final Widget page;
+  final String pageTitle;
 
-  const BaseTemplate({Key? key, required this.page}) : super(key: key);
+  const BaseTemplate({Key? key, required this.page, this.pageTitle = ' '})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // TODO: implement build
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text(pageTitle),
+      ),
       drawer: DrawerExpandableComponent(),
       body: page,
     );
