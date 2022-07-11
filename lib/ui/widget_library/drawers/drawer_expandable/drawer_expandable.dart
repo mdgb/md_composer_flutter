@@ -16,7 +16,7 @@ class DrawerExpandableComponent extends StatefulWidget {
 class _DrawerExpandableComponentState extends State<DrawerExpandableComponent> {
   int depth = 0;
   int selectedIndex = -1;
-  List<dynamic> selectedPath = [0];
+  String selectedPath = '';
   Color primaryColor = Color.fromARGB(255, 10, 50, 110);
   Color textColor = Colors.white;
   double drawerWidth = 200;
@@ -72,26 +72,31 @@ class _DrawerExpandableComponentState extends State<DrawerExpandableComponent> {
   Widget MenuItem(CDM item, int index, int depth, originPath) {
     // print(
     // 'ITEM ${item.title} hasSubmenuItems ${item.submenus.length} depth $depth originPath: $originPath');
-    final path = new List.from(originPath);
-    final isSelected = listEquals(path, selectedPath);
-    print('path $path | selectedPath $selectedPath');
+    final path = new List.from(originPath).join().toString();
+    final isSelected = (path == selectedPath) | selectedPath.startsWith(path);
+    // print('path $path | selectedPath ${selectedPath}');
+
     return Column(
       children: [
         Container(
           width: drawerWidth,
           child: InkWell(
               child: Container(
-                padding: EdgeInsets.all(8),
-                child: Text('${item.title} | $originPath | $isSelected'),
+                padding: EdgeInsets.only(
+                    top: 4, right: 4, bottom: 4, left: (8.0 * depth) + 8),
                 decoration: BoxDecoration(
-                    color: isSelected ? Colors.white10 : Colors.transparent),
+                  color: isSelected ? Colors.white10 : Colors.transparent,
+                ),
+                child: Text(
+                  item.title,
+                  style: TextStyle(color: textColor),
+                ),
               ),
               onTap: () {
                 setState(() {
                   selectedPath = path;
-                  print(
-                      'SET selectedPath: path = $path | depth = $depth | index = $index ');
-                  selectedIndex = index;
+                  // print(
+                  //     'SET selectedPath: path = $path | depth = $depth | index = $index ');
                 });
               }),
         ),
