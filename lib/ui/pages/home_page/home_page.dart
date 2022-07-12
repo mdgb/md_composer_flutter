@@ -173,23 +173,48 @@ class HomePage extends ConsumerWidget {
                     )
                   ],
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                SizedBox(height: 20),
+                ResponsiveRowColumn(
+                  layout: ResponsiveWrapper.of(context).isSmallerThan(TABLET)
+                      ? ResponsiveRowColumnType.COLUMN
+                      : ResponsiveRowColumnType.ROW,
+                  rowMainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ElevatedButton(
-                          onPressed: () {}, child: Text('Ehia!!!')),
+                    ResponsiveRowColumnItem(
+                      rowFlex: 1,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              minimumSize: Size(double.infinity, 50),
+                            ),
+                            onPressed: () {},
+                            child: Text('Ehia!!!')),
+                      ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ElevatedButton(
-                          onPressed: () {}, child: Text('Eeeehiaaaaa!!!')),
+                    ResponsiveRowColumnItem(
+                      rowFlex: 1,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              minimumSize: Size(double.infinity, 50),
+                            ),
+                            onPressed: () {},
+                            child: Text('Eeeehiaaaaa!!!')),
+                      ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ElevatedButton(
-                          onPressed: () {}, child: Text('Eeeehia!!!')),
+                    ResponsiveRowColumnItem(
+                      rowFlex: 1,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              minimumSize: Size(double.infinity, 50),
+                            ),
+                            onPressed: () {},
+                            child: Text('Eeeehia!!!')),
+                      ),
                     ),
                   ],
                 )
