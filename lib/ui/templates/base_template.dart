@@ -7,18 +7,43 @@ class BaseTemplate extends ConsumerWidget {
   final Widget page;
   final String pageTitle;
 
-  const BaseTemplate({Key? key, required this.page, this.pageTitle = ' '})
+  BaseTemplate({Key? key, required this.page, this.pageTitle = ''})
       : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // TODO: implement build
+    double pageWidth = MediaQuery.of(context).size.width;
+    bool isMobileResolution = pageWidth < 800;
+
     return Scaffold(
-      appBar: AppBar(
-        title: Text(pageTitle),
-      ),
-      drawer: DrawerExpandableComponent(),
-      body: page,
+      appBar: isMobileResolution
+          ? AppBar(
+              title: Text(pageTitle),
+            )
+          : null,
+      // drawerScrimColor: Colors.transparent,
+      drawer: isMobileResolution ? DrawerExpandableComponent() : null,
+      body: Container(child: getBodyLayout(isMobileResolution)),
     );
+  }
+
+  getBodyLayout(isMobileResolution) {
+    if (isMobileResolution == true) {
+      return ListView(controller: ScrollController(), children: [page]);
+    } else {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Container(
+            width: 200,
+            height: double.infinity,
+            child: DrawerExpandableComponent(),
+          ),
+          Expanded(
+            child: page,
+          )
+        ],
+      );
+    }
   }
 }

@@ -32,10 +32,11 @@ class RouterNotifier extends ChangeNotifier {
         GoRoute(
           name: rootRouteName,
           path: '/',
-          pageBuilder: (context, state) => MaterialPage<void>(
-            key: state.pageKey,
-            child: const SplashPage(),
-          ),
+          // pageBuilder: (context, state) => MaterialPage<void>(
+          //   key: state.pageKey,
+          //   child: const SplashPage(),
+          // ),
+          redirect: (state) => state.namedLocation(homeRouteName),
         ),
         GoRoute(
           name: 'rootRouteName',
@@ -63,7 +64,8 @@ class RouterNotifier extends ChangeNotifier {
           path: '/resetpassword',
           pageBuilder: (context, state) => MaterialPage<void>(
             key: state.pageKey,
-            child: ResetPasswordPage(),
+            child: BaseTemplate(
+                page: ResetPasswordPage(), pageTitle: 'Reset password'),
           ),
         ),
         GoRoute(
@@ -71,8 +73,7 @@ class RouterNotifier extends ChangeNotifier {
           path: '/welcome',
           pageBuilder: (context, state) => MaterialPage<void>(
             key: state.pageKey,
-            child:
-                BaseTemplate(page: const WelcomePage(), pageTitle: 'Welcome'),
+            child: BaseTemplate(page: const WelcomePage(), pageTitle: ''),
           ),
         ),
         GoRoute(

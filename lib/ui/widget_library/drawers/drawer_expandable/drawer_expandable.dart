@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:md_composer_flutter/ui/widget_library/avatars/avatar_base/avatar_base.dart';
 
 import 'cdm.dart' show CDM;
 
@@ -20,6 +21,8 @@ class _DrawerExpandableComponentState extends State<DrawerExpandableComponent> {
   double drawerWidth = 200;
 
   List<CDM> menuItems = [
+    const CDM(
+        title: 'Home', icon: Icons.subscriptions, url: '/root', submenus: []),
     const CDM(title: 'Dashboard', icon: Icons.grid_view, submenus: [
       CDM(title: 'Dash 1', icon: null, submenus: []),
       CDM(title: 'Dash 2', icon: Icons.grid_view, submenus: [
@@ -32,7 +35,11 @@ class _DrawerExpandableComponentState extends State<DrawerExpandableComponent> {
         icon: Icons.subscriptions,
         url: '/welcome',
         submenus: []),
-    const CDM(title: 'XXX', icon: Icons.markunread_mailbox, submenus: []),
+    const CDM(
+        title: 'reset password',
+        icon: Icons.markunread_mailbox,
+        url: '/resetpassword',
+        submenus: []),
     const CDM(title: 'PIE', icon: Icons.pie_chart, submenus: [
       CDM(title: 'PIE 1', icon: Icons.pie_chart, submenus: []),
     ]),
@@ -44,30 +51,49 @@ class _DrawerExpandableComponentState extends State<DrawerExpandableComponent> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Drawer(
-          backgroundColor: primaryColor,
-          width: drawerWidth,
-          child: Container(
-            child: ListView(
-              children: [
-                DrawerHeader(
-                  padding: EdgeInsets.all(8),
-                  decoration: BoxDecoration(color: Colors.black12),
-                  child: Container(
-                    child: FlutterLogo(),
+      color: primaryColor,
+      width: 200,
+      child: Row(
+        children: [
+          SizedBox(
+            width: 200,
+            child: Container(
+              child: ListView(
+                children: [
+                  Container(
+                    padding: EdgeInsets.all(8),
+                    decoration: BoxDecoration(color: Colors.black12),
+                    child: Container(
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              FlutterLogo(size: 36),
+                            ],
+                          ),
+                          Container(child: AvatarBase()),
+                          SizedBox(
+                            height: 16,
+                          )
+                        ],
+                      ),
+                    ),
                   ),
-                ),
-                ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: menuItems.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    final CDM menuItem = menuItems[index];
-                    return MenuItem(context, menuItem, index, depth, [index]);
-                  },
-                ),
-              ],
+                  SizedBox(height: 16),
+                  ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: menuItems.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      final CDM menuItem = menuItems[index];
+                      return MenuItem(context, menuItem, index, depth, [index]);
+                    },
+                  ),
+                ],
+              ),
             ),
-          )),
+          )
+        ],
+      ),
     );
   }
 
