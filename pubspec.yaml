@@ -41,6 +41,7 @@ dependencies:
   go_router: ^4.1.0
   shared_preferences: ^2.0.15
   reflectable: ^3.0.9
+  responsive_framework: ^0.2.0
 
 dev_dependencies:
   flutter_test:

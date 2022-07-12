@@ -6,6 +6,7 @@ import 'package:md_composer_flutter/providers/drawer_menu_provider.dart';
 import 'package:md_composer_flutter/services/auth_services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -26,106 +27,135 @@ class HomePage extends ConsumerWidget {
       shrinkWrap: true,
       children: [
         Stack(
+          clipBehavior: Clip.none,
           children: [
-            ClipPath(
-              clipper: BackgroundClipper(),
-              child: Container(
-                width: double.infinity,
-                // height: double.minPositive,
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topRight,
-                    end: Alignment.bottomLeft,
-                    colors: [
-                      Color.fromARGB(255, 2, 22, 40),
-                      Color.fromARGB(255, 61, 18, 15),
-                    ],
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(16, 16, 16, 200),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Row(
-                        children: const [
-                          Text(
-                            'Barra Menu',
-                            style: TextStyle(color: Colors.white, fontSize: 24),
-                          ),
+            Positioned.fill(
+              bottom: 150,
+              child: SizedBox(
+                height: 600,
+                child: ClipPath(
+                  clipper: BackgroundClipper(),
+                  child: Container(
+                    width: double.infinity,
+                    // height: double.minPositive,
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: [
+                          Color.fromARGB(255, 2, 22, 40),
+                          Color.fromARGB(255, 61, 18, 15),
                         ],
                       ),
-                      const SizedBox(
-                        height: 25,
-                      ),
-                      Container(
-                        child: const Text(
-                          'Titolo Big !',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 48,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 25,
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width / 2,
-                        child: const Text(
-                          'Powerful and professional admin template for Web Applications, CRM, CMS, Admin Panels and more..',
-                          style: const TextStyle(
-                            color: Colors.white70,
-                            fontSize: 18,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      const SizedBox(height: 40)
-                    ],
+                    ),
+                    child: Container(),
                   ),
                 ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 16, 16, 40),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Row(
+                    children: const [
+                      Text(
+                        'Barra Menu',
+                        style: TextStyle(color: Colors.white, fontSize: 24),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 25,
+                  ),
+                  Container(
+                    child: const Text(
+                      'Titolo Big !',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 48,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 25,
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width / 2,
+                    child: const Text(
+                      'Powerful and professional admin template for Web Applications, CRM, CMS, Admin Panels and more..',
+                      style: const TextStyle(
+                        color: Colors.white70,
+                        fontSize: 18,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  SizedBox(height: 80),
+                  AnimatedContainer(
+                    duration: Duration(milliseconds: 250),
+                    width: ResponsiveValue(
+                      context,
+                      defaultValue: 400.0,
+                      valueWhen: [
+                        Condition.smallerThan(name: MOBILE, value: 300.0),
+                        Condition.largerThan(
+                            name: TABLET,
+                            value: MediaQuery.of(context).size.width / 2),
+                        Condition.largerThan(
+                            name: DESKTOP,
+                            value: MediaQuery.of(context).size.width / 3),
+                      ],
+                    ).value,
+                    child: const Image(
+                      fit: BoxFit.cover,
+                      image: NetworkImage(
+                          'https://images.unsplash.com/photo-1657564793579-9d49d4d7257b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'),
+                    ),
+                    // transform: Matrix4.translationValues(0.0, -150.0, 0.0),
+                    clipBehavior: Clip.hardEdge,
+                    decoration: BoxDecoration(
+                        color: Colors.black,
+                        borderRadius: BorderRadius.circular(20),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.white.withOpacity(0.05),
+                            spreadRadius: 20,
+                            blurRadius: 0,
+                            offset: const Offset(0, -3),
+                          ),
+                          BoxShadow(
+                            color: Colors.white.withOpacity(0.05),
+                            spreadRadius: 40,
+                            blurRadius: 0,
+                            offset: const Offset(0, -3),
+                          ),
+                          BoxShadow(
+                            color: Colors.white.withOpacity(0.05),
+                            spreadRadius: 60,
+                            blurRadius: 0,
+                            offset: const Offset(0, -3),
+                          ),
+                        ]),
+                  ),
+                  // const SizedBox(height: 40)
+                ],
               ),
             ),
           ],
         ),
         Container(
           width: double.infinity,
-          child: Center(
-            child: Container(
-              width: 400,
-              height: 400,
-              child: const Image(
-                fit: BoxFit.cover,
-                image: NetworkImage(
-                    'https://images.unsplash.com/photo-1657564793579-9d49d4d7257b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'),
+          // transform: Matrix4.translationValues(0.0, -150.0, 0.0),
+          child: Column(
+            children: [
+              Center(
+                child: Text('Lorem ipsum dolor sit amet...',
+                    style: TextStyle(fontSize: 24)),
               ),
-              transform: Matrix4.translationValues(0.0, -150.0, 0.0),
-              clipBehavior: Clip.hardEdge,
-              decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.circular(20),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.white.withOpacity(0.05),
-                      spreadRadius: 20,
-                      blurRadius: 0,
-                      offset: const Offset(0, -3),
-                    ),
-                    BoxShadow(
-                      color: Colors.white.withOpacity(0.05),
-                      spreadRadius: 40,
-                      blurRadius: 0,
-                      offset: const Offset(0, -3),
-                    ),
-                    BoxShadow(
-                      color: Colors.white.withOpacity(0.05),
-                      spreadRadius: 60,
-                      blurRadius: 0,
-                      offset: const Offset(0, -3),
-                    ),
-                  ]),
-            ),
+              SizedBox(height: 40),
+            ],
           ),
         ),
         Container(
