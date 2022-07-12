@@ -1,125 +1,200 @@
 ///HOMEPAGE MENE YAHA PAR HE BOTTOMNAVIGATION USE KIYA HAI
 ///KYUNKI CODE CHHOTA HAI ISLIYE
 import 'package:flutter/material.dart';
+import 'package:md_composer_flutter/providers/color_scheme_provider.dart';
+import 'package:md_composer_flutter/providers/drawer_menu_provider.dart';
 import 'package:md_composer_flutter/services/auth_services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class HomePage extends ConsumerStatefulWidget {
-  final int index;
-  HomePage({String? tab = 'shop', Key? key})
-      : index = indexFrom(tab!),
-        super(key: key);
+class HomePage extends ConsumerWidget {
+  const HomePage({Key? key}) : super(key: key);
 
-  @override
-  ConsumerState<HomePage> createState() => _HomePageState();
-  static int indexFrom(String tab) {
-    switch (tab) {
-      case 'cart':
-        return 1;
-      case 'profile':
-        return 2;
-      case 'shopping':
-      default:
-        return 0;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final _selectedDestination = ref.watch(selectedDrawerMenuProvider);
+    final colorScheme = ref.watch(colorSchemeProvider);
+    final theme = Theme.of(context);
+    final textTheme = theme.textTheme;
+
+    selectDestination(String location) {
+      ref.read(selectedDrawerMenuProvider.notifier).state = location;
+      context.go(location);
     }
-  }
-}
 
-class _HomePageState extends ConsumerState<HomePage> {
-  late int _selectedIndex;
-  @override
-  void initState() {
-    super.initState();
-    _selectedIndex = widget.index;
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    _selectedIndex = widget.index;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Color.fromARGB(255, 54, 26, 103),
-        appBar: AppBar(
-          title: Text(
-            "Home Page",
-            style: TextStyle(
-              color: Theme.of(context).primaryColor,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-          centerTitle: true,
-          backgroundColor: Colors.white,
-          actions: [
-            IconButton(
-              onPressed: () async {
-                await ref.read(authViewModelProvider).logout();
-                // ignore: use_build_context_synchronously
-                context.go('/login');
-              },
-              icon: const Icon(Icons.logout_outlined),
+    return ListView(
+      controller: ScrollController(),
+      shrinkWrap: true,
+      children: [
+        Stack(
+          children: [
+            ClipPath(
+              clipper: BackgroundClipper(),
+              child: Container(
+                width: double.infinity,
+                // height: double.minPositive,
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topRight,
+                    end: Alignment.bottomLeft,
+                    colors: [
+                      Color.fromARGB(255, 2, 22, 40),
+                      Color.fromARGB(255, 61, 18, 15),
+                    ],
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 16, 16, 200),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Row(
+                        children: const [
+                          Text(
+                            'Barra Menu',
+                            style: TextStyle(color: Colors.white, fontSize: 24),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 25,
+                      ),
+                      Container(
+                        child: const Text(
+                          'Titolo Big !',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 48,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 25,
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width / 2,
+                        child: const Text(
+                          'Powerful and professional admin template for Web Applications, CRM, CMS, Admin Panels and more..',
+                          style: const TextStyle(
+                            color: Colors.white70,
+                            fontSize: 18,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      const SizedBox(height: 40)
+                    ],
+                  ),
+                ),
+              ),
             ),
           ],
         ),
-        drawer: Drawer(
-          backgroundColor: Colors.white,
-          child: Column(
-            children: [
-              const DrawerHeader(
-                child: Text('DRAWER HEADER'),
+        Container(
+          width: double.infinity,
+          child: Center(
+            child: Container(
+              width: 400,
+              height: 400,
+              child: const Image(
+                fit: BoxFit.cover,
+                image: NetworkImage(
+                    'https://images.unsplash.com/photo-1657564793579-9d49d4d7257b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'),
               ),
-              ListTile(
-                title: Text('welcome'),
-                onTap: () {
-                  context.go('/welcome');
-                },
-              ),
-              ListTile(
-                title: const Text('Reset password'),
-                onTap: () {
-                  context.go('/resetpassword');
-                },
-              ),
-            ],
+              transform: Matrix4.translationValues(0.0, -150.0, 0.0),
+              clipBehavior: Clip.hardEdge,
+              decoration: BoxDecoration(
+                  color: Colors.black,
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.white.withOpacity(0.05),
+                      spreadRadius: 20,
+                      blurRadius: 0,
+                      offset: const Offset(0, -3),
+                    ),
+                    BoxShadow(
+                      color: Colors.white.withOpacity(0.05),
+                      spreadRadius: 40,
+                      blurRadius: 0,
+                      offset: const Offset(0, -3),
+                    ),
+                    BoxShadow(
+                      color: Colors.white.withOpacity(0.05),
+                      spreadRadius: 60,
+                      blurRadius: 0,
+                      offset: const Offset(0, -3),
+                    ),
+                  ]),
+            ),
           ),
+        ),
+        Container(
+          padding: EdgeInsets.fromLTRB(20, 40, 20, 40),
+          color: Colors.blue.shade900,
+          child: Center(
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Looking for something cool ?',
+                      style: TextStyle(color: Colors.white, fontSize: 24),
+                    )
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ElevatedButton(
+                          onPressed: () {}, child: Text('Ehia!!!')),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ElevatedButton(
+                          onPressed: () {}, child: Text('Eeeehiaaaaa!!!')),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ElevatedButton(
+                          onPressed: () {}, child: Text('Eeeehia!!!')),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+        ),
+        Container(
+          height: 250,
         )
-        // bottomNavigationBar: BottomNavigationBar(
-        //   items: const [
-        //     BottomNavigationBarItem(icon: Icon(Icons.shop), label: 'Shop'),
-        //     BottomNavigationBarItem(
-        //         icon: Icon(Icons.shopping_cart), label: 'Cart'),
-        //     BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-        //   ],
-        //   backgroundColor: Colors.blue,
-        //   currentIndex: _selectedIndex,
-        //   selectedItemColor: Colors.white,
-        //   onTap: (index) {
-        //     setState(
-        //       () {
-        //         _selectedIndex = index;
-        //         switch (index) {
-        //           case 0:
-        //             context.go('/shop');
-        //             break;
-        //           case 1:
-        //             context.go('/cart');
-        //             break;
-        //           case 2:
-        //             context.go('/profile');
-        //             break;
-        //         }
-        //       },
-        //     );
-        //   },
-        // ),
-        // body: IndexedStack(
-        //   index: _selectedIndex,
-        //   children: const [Shopping(), Cart(), Profile()],
-        // ),
-        );
+      ],
+    );
+  }
+}
+
+class BackgroundClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    var path = Path();
+    path.lineTo(0, size.height);
+    // path.lineTo(size.width, size.height);
+    path.quadraticBezierTo(
+      size.width * 0.3,
+      size.height - 150,
+      size.width,
+      size.height,
+    );
+    path.lineTo(size.width, 0);
+    path.close();
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) {
+    return true;
   }
 }

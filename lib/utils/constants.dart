@@ -1,3 +1,4 @@
+// ROUTES
 const String rootRouteName = 'root';
 const String cartRouteName = 'cart';
 const String createAccountRouteName = 'register';
@@ -17,3 +18,5 @@ const String subDetailsRouteName = 'shop-details';
 const String shoppingRouteName = 'shopping';
 const String signinInfoRouteName = 'signin';
 const String resetPasswordRouteName = 'reset-password';
+
+const double mobileLayoutWhidth = 800;

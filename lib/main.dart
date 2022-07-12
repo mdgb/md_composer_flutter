@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:md_composer_flutter/firebase_options.dart';
+import 'package:md_composer_flutter/providers/color_scheme_provider.dart';
 import 'package:md_composer_flutter/router/router.dart';
 
 // EXAMPLE APP FOLLOWING https://github.com/me-mohit/Gorouter_riverpod
@@ -22,8 +23,7 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final router = ref.watch(routerProvider);
 
-    final colorScheme =
-        ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 8, 56, 169));
+    final colorScheme = ref.watch(colorSchemeProvider);
 
     return MaterialApp.router(
       title: 'Flutter Demo',

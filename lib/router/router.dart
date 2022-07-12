@@ -10,6 +10,7 @@ import '../ui/pages/login_page/login_page.dart';
 import '../ui/pages/register_page/register_page.dart';
 import '../ui/pages/reset_password_page/reset_password_page.dart';
 import '../ui/pages/welcome_page/welcome_page.dart';
+import '../ui/templates/base_template.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
   final router = RouterNotifier(ref);
@@ -31,16 +32,16 @@ class RouterNotifier extends ChangeNotifier {
         GoRoute(
           name: rootRouteName,
           path: '/',
-          pageBuilder: (context, state) => MaterialPage<void>(
-            key: state.pageKey,
-            child: const SplashPage(),
-          ),
+          // pageBuilder: (context, state) => MaterialPage<void>(
+          //   key: state.pageKey,
+          //   child: const SplashPage(),
+          // ),
+          redirect: (state) => state.namedLocation(homeRouteName),
         ),
         GoRoute(
           name: 'rootRouteName',
           path: '/root',
-          redirect: (state) =>
-              state.namedLocation(homeRouteName, params: {'tab': 'shop'}),
+          redirect: (state) => state.namedLocation(homeRouteName),
         ),
         GoRoute(
           name: loginRouteName,
@@ -63,7 +64,8 @@ class RouterNotifier extends ChangeNotifier {
           path: '/resetpassword',
           pageBuilder: (context, state) => MaterialPage<void>(
             key: state.pageKey,
-            child: ResetPasswordPage(),
+            child: BaseTemplate(
+                page: ResetPasswordPage(), pageTitle: 'Reset password'),
           ),
         ),
         GoRoute(
@@ -71,17 +73,16 @@ class RouterNotifier extends ChangeNotifier {
           path: '/welcome',
           pageBuilder: (context, state) => MaterialPage<void>(
             key: state.pageKey,
-            child: const WelcomePage(),
+            child: BaseTemplate(page: const WelcomePage(), pageTitle: ''),
           ),
         ),
         GoRoute(
           name: homeRouteName,
-          path: '/home/:tab(shop|cart|profile)',
+          path: '/home',
           pageBuilder: (context, state) {
-            final tab = state.params['tab']!;
             return MaterialPage<void>(
               key: state.pageKey,
-              child: HomePage(tab: tab),
+              child: BaseTemplate(page: const HomePage(), pageTitle: 'Home'),
             );
           },
         ),

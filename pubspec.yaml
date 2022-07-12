@@ -40,6 +40,7 @@ dependencies:
   flutter_riverpod: ^1.0.4
   go_router: ^4.1.0
   shared_preferences: ^2.0.15
+  reflectable: ^3.0.9
 
 dev_dependencies:
   flutter_test:
