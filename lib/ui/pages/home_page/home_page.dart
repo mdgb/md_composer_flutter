@@ -1,15 +1,29 @@
 ///HOMEPAGE MENE YAHA PAR HE BOTTOMNAVIGATION USE KIYA HAI
 ///KYUNKI CODE CHHOTA HAI ISLIYE
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:md_composer_flutter/providers/color_scheme_provider.dart';
 import 'package:md_composer_flutter/providers/drawer_menu_provider.dart';
 import 'package:md_composer_flutter/services/auth_services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  static const String markdownContent = '''
+# Heading h1
+## Heading h2
+###### Heading h6
+
+Lorem ipsum **bold text** [Link](https://flutter.dev)
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+''';
 
   Widget build(BuildContext context, WidgetRef ref) {
     final _selectedDestination = ref.watch(selectedDrawerMenuProvider);
@@ -243,6 +257,7 @@ class HomePage extends ConsumerWidget {
             ),
             Container(
               child: ResponsiveRowColumn(
+                rowMainAxisAlignment: MainAxisAlignment.center,
                 layout: ResponsiveWrapper.of(context).isSmallerThan(TABLET)
                     ? ResponsiveRowColumnType.COLUMN
                     : ResponsiveRowColumnType.ROW,
@@ -251,16 +266,18 @@ class HomePage extends ConsumerWidget {
                     rowFlex: 1,
                     child: Container(
                       padding: EdgeInsets.all(32),
-                      color: Colors.green,
+                      // color: Colors.green,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SizedBox(width: 80, height: 80, child: Placeholder()),
-                          Text('TITOLO'),
-                          Text(
-                              '''Fuse React written with the React Hooks (New feature of react let you use state and other React features without writing a class.
-                        With the included apps and pages, Fuse React is a great kick-starter for your next project.
-                        Don’t lose any time trying to design or structure your pages, pick one and start coding your logic right away!''')
+                          MarkdownBody(
+                            data: markdownContent,
+                            onTapLink: (text, href, title) {
+                              print('HREF $text, $href, $title');
+                              href != null ? launchUrl(Uri.parse(href)) : null;
+                            },
+                          ),
                         ],
                       ),
                     ),

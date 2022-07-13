@@ -43,6 +43,7 @@ dependencies:
   reflectable: ^3.0.9
   responsive_framework: ^0.2.0
   flutter_markdown: ^0.6.10+2
+  url_launcher: ^6.1.4
 
 dev_dependencies:
   flutter_test:
