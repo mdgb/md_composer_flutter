@@ -31,14 +31,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
 
-    selectDestination(String location) {
-      ref.read(selectedDrawerMenuProvider.notifier).state = location;
-      context.go(location);
-    }
-
     return ListView(
       controller: ScrollController(),
-      shrinkWrap: true,
       children: [
         Stack(
           clipBehavior: Clip.none,

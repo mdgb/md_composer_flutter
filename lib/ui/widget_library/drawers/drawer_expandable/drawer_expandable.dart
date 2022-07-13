@@ -23,6 +23,11 @@ class _DrawerExpandableComponentState extends State<DrawerExpandableComponent> {
   List<CDM> menuItems = [
     const CDM(
         title: 'Home', icon: Icons.subscriptions, url: '/root', submenus: []),
+    const CDM(
+        title: 'Responsive page',
+        icon: Icons.subscriptions,
+        url: '/responsive_page',
+        submenus: []),
     const CDM(title: 'Dashboard', icon: Icons.grid_view, submenus: [
       CDM(title: 'Dash 1', icon: null, submenus: []),
       CDM(title: 'Dash 2', icon: Icons.grid_view, submenus: [
