@@ -30,7 +30,7 @@ class MyApp extends ConsumerWidget {
     return MaterialApp.router(
       builder: (context, child) => ResponsiveWrapper.builder(
         BouncingScrollWrapper.builder(context, child!),
-        // maxWidth: 2460,
+        // maxWidth: 1000,
         minWidth: 450,
         defaultScale: true,
         breakpoints: [

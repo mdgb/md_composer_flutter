@@ -42,6 +42,7 @@ dependencies:
   shared_preferences: ^2.0.15
   reflectable: ^3.0.9
   responsive_framework: ^0.2.0
+  flutter_markdown: ^0.6.10+2
 
 dev_dependencies:
   flutter_test:

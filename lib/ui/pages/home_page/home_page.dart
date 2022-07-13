@@ -31,25 +31,22 @@ class HomePage extends ConsumerWidget {
           children: [
             Positioned.fill(
               bottom: 150,
-              child: SizedBox(
-                height: 600,
-                child: ClipPath(
-                  clipper: BackgroundClipper(),
-                  child: Container(
-                    width: double.infinity,
-                    // height: double.minPositive,
-                    decoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topRight,
-                        end: Alignment.bottomLeft,
-                        colors: [
-                          Color.fromARGB(255, 2, 22, 40),
-                          Color.fromARGB(255, 61, 18, 15),
-                        ],
-                      ),
+              child: ClipPath(
+                clipper: BackgroundClipper1(),
+                child: Container(
+                  width: double.infinity,
+                  // height: double.minPositive,
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topRight,
+                      end: Alignment.bottomLeft,
+                      colors: [
+                        Color.fromARGB(255, 2, 22, 40),
+                        Color.fromARGB(255, 61, 18, 15),
+                      ],
                     ),
-                    child: Container(),
                   ),
+                  child: Container(),
                 ),
               ),
             ),
@@ -222,15 +219,71 @@ class HomePage extends ConsumerWidget {
             ),
           ),
         ),
-        Container(
-          height: 250,
-        )
+        Stack(
+          children: [
+            Positioned.fill(
+              child: ClipPath(
+                clipper: BackgroundClipper2(),
+                child: Container(
+                  width: double.infinity,
+                  // height: double.minPositive,
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Color.fromRGBO(248, 250, 252, 0),
+                        Color.fromRGBO(226, 232, 240, 100),
+                      ],
+                    ),
+                  ),
+                  child: Container(),
+                ),
+              ),
+            ),
+            Container(
+              child: ResponsiveRowColumn(
+                layout: ResponsiveWrapper.of(context).isSmallerThan(TABLET)
+                    ? ResponsiveRowColumnType.COLUMN
+                    : ResponsiveRowColumnType.ROW,
+                children: [
+                  ResponsiveRowColumnItem(
+                    rowFlex: 1,
+                    child: Container(
+                      padding: EdgeInsets.all(32),
+                      color: Colors.green,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(width: 80, height: 80, child: Placeholder()),
+                          Text('TITOLO'),
+                          Text(
+                              '''Fuse React written with the React Hooks (New feature of react let you use state and other React features without writing a class.
+                        With the included apps and pages, Fuse React is a great kick-starter for your next project.
+                        Don’t lose any time trying to design or structure your pages, pick one and start coding your logic right away!''')
+                        ],
+                      ),
+                    ),
+                  ),
+                  ResponsiveRowColumnItem(
+                    rowFlex: 1,
+                    child: Container(
+                      padding: EdgeInsets.all(32),
+                      child: Placeholder(),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        SizedBox(height: 40)
       ],
     );
   }
 }
 
-class BackgroundClipper extends CustomClipper<Path> {
+class BackgroundClipper1 extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     var path = Path();
@@ -241,6 +294,30 @@ class BackgroundClipper extends CustomClipper<Path> {
       size.height - 150,
       size.width,
       size.height,
+    );
+    path.lineTo(size.width, 0);
+    path.close();
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) {
+    return true;
+  }
+}
+
+class BackgroundClipper2 extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    var path = Path();
+    path.lineTo(0, size.height - 150);
+    // path.lineTo(size.width, size.height);
+    path.quadraticBezierTo(
+      size.width * 0.2,
+      size.height + 150,
+      size.width,
+      size.height - 150,
     );
     path.lineTo(size.width, 0);
     path.close();
