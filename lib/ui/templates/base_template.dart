@@ -23,11 +23,11 @@ class BaseTemplate extends ConsumerWidget {
       drawer: ResponsiveWrapper.of(context).isSmallerThan(TABLET)
           ? DrawerExpandableComponent()
           : null,
-      body: getBodyLayout(context),
+      body: getBodyLayout(context, page),
     );
   }
 
-  getBodyLayout(context) {
+  getBodyLayout(context, page) {
     if (ResponsiveWrapper.of(context).isSmallerThan(TABLET)) {
       return page;
     } else {

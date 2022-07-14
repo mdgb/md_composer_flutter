@@ -264,7 +264,15 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(width: 80, height: 80, child: Placeholder()),
+                          Container(
+                            // width: 80,
+                            // height: 80,
+                            child: Icon(
+                              Icons.rocket_launch,
+                              color: Colors.blue,
+                              size: 80,
+                            ),
+                          ),
                           MarkdownBody(
                             data: markdownContent,
                             onTapLink: (text, href, title) {
