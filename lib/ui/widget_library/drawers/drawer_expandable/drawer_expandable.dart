@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:md_composer_flutter/services/auth_services.dart';
 import 'package:md_composer_flutter/ui/widget_library/avatars/avatar_base/avatar_base.dart';
 
 import 'cdm.dart' show CDM;
 
-class DrawerExpandableComponent extends StatefulWidget {
+class DrawerExpandableComponent extends ConsumerStatefulWidget {
   const DrawerExpandableComponent({Key? key}) : super(key: key);
 
   @override
-  State<DrawerExpandableComponent> createState() =>
+  ConsumerState<ConsumerStatefulWidget> createState() =>
       _DrawerExpandableComponentState();
 }
 
-class _DrawerExpandableComponentState extends State<DrawerExpandableComponent> {
+class _DrawerExpandableComponentState
+    extends ConsumerState<DrawerExpandableComponent> {
   int depth = 0;
   int selectedIndex = -1;
   String selectedPath = '';
@@ -20,38 +23,58 @@ class _DrawerExpandableComponentState extends State<DrawerExpandableComponent> {
   Color textColor = Colors.white;
   double drawerWidth = 200;
 
-  List<CDM> menuItems = [
-    const CDM(
-        title: 'Home', icon: Icons.subscriptions, url: '/root', submenus: []),
-    const CDM(
-        title: 'Responsive page',
-        icon: Icons.subscriptions,
-        url: '/responsive_page',
-        submenus: []),
-    const CDM(title: 'Dashboard', icon: Icons.grid_view, submenus: [
-      CDM(title: 'Dash 1', icon: null, submenus: []),
-      CDM(title: 'Dash 2', icon: Icons.grid_view, submenus: [
-        CDM(title: 'Dash 2 - 1', icon: null, submenus: []),
-        CDM(title: 'Dash 2 - 2', icon: null, submenus: []),
+  List menuItems = [];
+
+  _DrawerExpandableComponentState() {
+    List<CDM> items = [
+      const CDM(
+          title: 'Home', icon: Icons.subscriptions, url: '/root', submenus: []),
+      const CDM(
+          title: 'Responsive page',
+          icon: Icons.subscriptions,
+          url: '/responsive_page',
+          submenus: []),
+      const CDM(title: 'Dashboard', icon: Icons.grid_view, submenus: [
+        CDM(title: 'Dash 1', icon: null, submenus: []),
+        CDM(title: 'Dash 2', icon: Icons.grid_view, submenus: [
+          CDM(title: 'Dash 2 - 1', icon: null, submenus: []),
+          CDM(title: 'Dash 2 - 2', icon: null, submenus: []),
+        ]),
       ]),
-    ]),
-    const CDM(
-        title: 'Welcome',
-        icon: Icons.subscriptions,
-        url: '/welcome',
-        submenus: []),
-    const CDM(
-        title: 'reset password',
-        icon: Icons.markunread_mailbox,
-        url: '/resetpassword',
-        submenus: []),
-    const CDM(title: 'PIE', icon: Icons.pie_chart, submenus: [
-      CDM(title: 'PIE 1', icon: Icons.pie_chart, submenus: []),
-    ]),
-    const CDM(title: 'XXX', icon: Icons.power, submenus: []),
-    const CDM(title: 'XXX', icon: Icons.explore, submenus: []),
-    const CDM(title: 'XXX', icon: Icons.settings, submenus: []),
-  ];
+      const CDM(
+          title: 'Welcome',
+          icon: Icons.subscriptions,
+          url: '/welcome',
+          submenus: []),
+      CDM(title: 'Auth', icon: Icons.person, submenus: [
+        CDM(title: 'Login', icon: null, url: '/login', submenus: []),
+        CDM(
+            title: 'Logout',
+            icon: null,
+            // url: '/logout',
+            submenus: [],
+            action: () async {
+              print('LOGOUT ACTION');
+              var auth = ref.read(authViewModelProvider.notifier);
+              await auth.logout();
+              context.go('/');
+            }),
+        CDM(title: 'Register', icon: null, url: '/register', submenus: []),
+        CDM(
+            title: 'Reset Password',
+            icon: null,
+            url: '/resetpassword',
+            submenus: []),
+      ]),
+      const CDM(title: 'PIE', icon: Icons.pie_chart, submenus: [
+        CDM(title: 'PIE 1', icon: Icons.pie_chart, submenus: []),
+      ]),
+      const CDM(title: 'XXX', icon: Icons.power, submenus: []),
+      const CDM(title: 'XXX', icon: Icons.explore, submenus: []),
+      const CDM(title: 'XXX', icon: Icons.settings, submenus: []),
+    ];
+    menuItems.addAll(items);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -149,6 +172,10 @@ class _DrawerExpandableComponentState extends State<DrawerExpandableComponent> {
                       ? selectedPath = ''
                       : selectedPath = path;
                 });
+                if (item.action != null) {
+                  print('EXECUTE ACTION');
+                  item.action!();
+                }
                 if (item.url != null) {
                   GoRouter.of(context).go(item.url.toString());
                 }

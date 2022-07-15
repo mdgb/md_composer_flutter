@@ -23,22 +23,63 @@ class ResponsiveTestPage extends ConsumerWidget {
     final _colors = ref.watch(colorsProvider);
     final _example = ref.watch(exampleProvider);
 
-    return ListView(
-      controller: ScrollController(),
-      children: [
-        formController(ref, _example),
-        Divider(height: 2),
-        SizedBox(height: 20),
-        if (_example == 'ResponsiveRowColumn')
-          responsiveRowColumn(context, _elementCount, _colors),
-        if (_example == 'Wrap')
-          WrapExample(elementCount: _elementCount, colors: _colors),
-        if (_example == 'GridView')
-          gridViewExample(elementCount: _elementCount, colors: _colors),
-        if (_example == 'StaggeredGridView')
-          staggeredGridCountExample(
-              elementCount: _elementCount, colors: _colors),
-      ],
+    return Scaffold(
+      body: ListView(
+        controller: ScrollController(),
+        children: [
+          formController(ref, _example),
+          Divider(height: 2),
+          SizedBox(height: 20),
+          if (_example == 'ResponsiveRowColumn')
+            responsiveRowColumn(context, _elementCount, _colors),
+          if (_example == 'Wrap')
+            WrapExample(elementCount: _elementCount, colors: _colors),
+          if (_example == 'GridView')
+            gridViewExample(elementCount: _elementCount, colors: _colors),
+          if (_example == 'StaggeredGridView')
+            staggeredGridCountExample(
+                elementCount: _elementCount, colors: _colors),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          showModalBottomSheet<void>(
+            context: context,
+            backgroundColor: Color.fromRGBO(255, 255, 255, 0.5),
+            builder: (BuildContext context) {
+              return Container(
+                // height: 200,
+                color: Colors.transparent,
+
+                child: Center(
+                  child: Column(
+                    // mainAxisAlignment: MainAxisAlignment.center,
+                    // mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: <Widget>[
+                      Positioned(
+                        top: 0,
+                        right: 0,
+                        width: 100,
+                        child: ElevatedButton(
+                          child: const Text('Close BottomSheet'),
+                          onPressed: () => Navigator.pop(context),
+                        ),
+                      ),
+                      const Text('Modal BottomSheet'),
+                    ],
+                  ),
+                ),
+              );
+            },
+          );
+        },
+        label: const Text('Settings'),
+        icon: const Icon(Icons.settings),
+        backgroundColor: Colors.blueAccent.shade700,
+        elevation: 5,
+        foregroundColor: Colors.white,
+      ),
     );
   }
 

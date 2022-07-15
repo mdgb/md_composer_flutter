@@ -33,11 +33,11 @@ class RouterNotifier extends ChangeNotifier {
         GoRoute(
           name: rootRouteName,
           path: '/',
-          // pageBuilder: (context, state) => MaterialPage<void>(
-          //   key: state.pageKey,
-          //   child: const SplashPage(),
-          // ),
-          redirect: (state) => state.namedLocation(homeRouteName),
+          pageBuilder: (context, state) => MaterialPage<void>(
+            key: state.pageKey,
+            child: const SplashPage(),
+          ),
+          // redirect: (state) => state.namedLocation(homeRouteName),
         ),
         GoRoute(
           name: 'rootRouteName',

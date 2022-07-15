@@ -5,6 +5,11 @@ class CDM {
   final IconData? icon;
   final String? url;
   final List<CDM> submenus;
+  final Function? action;
   const CDM(
-      {required this.title, this.icon, this.url, this.submenus = const []});
+      {required this.title,
+      this.icon,
+      this.url,
+      this.submenus = const [],
+      this.action});
 }
