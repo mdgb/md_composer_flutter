@@ -25,6 +25,11 @@ Lorem ipsum **bold text** [Link](https://flutter.dev)
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 ''';
 
+  static const String markdownContent2 = '''
+  # Fuse is a learning source
+  With well commented and structured source code, whether a beginner or a seasoned React developer, you will find something interesting in Fuse React.
+''';
+
   Widget build(BuildContext context, WidgetRef ref) {
     final _selectedDestination = ref.watch(selectedDrawerMenuProvider);
     final colorScheme = ref.watch(colorSchemeProvider);
@@ -228,6 +233,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
           ),
         ),
         Stack(
+          clipBehavior: Clip.none,
           children: [
             Positioned.fill(
               child: ClipPath(
@@ -250,6 +256,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
               ),
             ),
             Container(
+              padding: EdgeInsets.only(bottom: 50),
               child: ResponsiveRowColumn(
                 rowMainAxisAlignment: MainAxisAlignment.center,
                 layout: ResponsiveWrapper.of(context).isSmallerThan(TABLET)
@@ -288,7 +295,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
                     rowFlex: 1,
                     child: Container(
                       padding: EdgeInsets.all(32),
-                      child: Placeholder(),
+                      child: const Image(
+                        fit: BoxFit.cover,
+                        image: NetworkImage(
+                            'https://fusetheme.com/static/assets/react/dashboards/project-dashboard.png'),
+                      ),
                     ),
                   ),
                 ],
@@ -296,7 +307,56 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
             ),
           ],
         ),
-        SizedBox(height: 40)
+        SizedBox(height: 40),
+        Container(
+          child: ResponsiveRowColumn(
+            rowMainAxisAlignment: MainAxisAlignment.center,
+            layout: ResponsiveWrapper.of(context).isSmallerThan(TABLET)
+                ? ResponsiveRowColumnType.COLUMN
+                : ResponsiveRowColumnType.ROW,
+            rowTextDirection: TextDirection.rtl,
+            children: [
+              ResponsiveRowColumnItem(
+                rowFlex: 1,
+                child: Container(
+                  padding: EdgeInsets.all(32),
+                  // color: Colors.green,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        // width: 80,
+                        // height: 80,
+                        child: Icon(
+                          Icons.book,
+                          color: Colors.blue,
+                          size: 80,
+                        ),
+                      ),
+                      MarkdownBody(
+                        data: markdownContent2,
+                        onTapLink: (text, href, title) {
+                          href != null ? launchUrl(Uri.parse(href)) : null;
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              ResponsiveRowColumnItem(
+                rowFlex: 1,
+                child: Container(
+                  padding: EdgeInsets.all(32),
+                  child: const Image(
+                    fit: BoxFit.cover,
+                    image: NetworkImage(
+                        'https://fusetheme.com/static/assets/react/learning-source.png'),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ],
     );
   }
@@ -330,13 +390,13 @@ class BackgroundClipper2 extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     var path = Path();
-    path.lineTo(0, size.height - 150);
+    path.lineTo(0, size.height - 250);
     // path.lineTo(size.width, size.height);
     path.quadraticBezierTo(
       size.width * 0.2,
-      size.height + 150,
+      size.height + 250,
       size.width,
-      size.height - 150,
+      size.height - 250,
     );
     path.lineTo(size.width, 0);
     path.close();
