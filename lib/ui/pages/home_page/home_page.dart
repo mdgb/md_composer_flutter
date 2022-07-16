@@ -49,13 +49,13 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
                 child: Container(
                   width: double.infinity,
                   // height: double.minPositive,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     gradient: LinearGradient(
                       begin: Alignment.topRight,
                       end: Alignment.bottomLeft,
                       colors: [
-                        Color.fromARGB(255, 2, 22, 40),
-                        Color.fromARGB(255, 61, 18, 15),
+                        colorScheme.primary,
+                        colorScheme.onBackground,
                       ],
                     ),
                   ),
@@ -170,7 +170,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
         ),
         Container(
           padding: EdgeInsets.fromLTRB(20, 40, 20, 40),
-          color: Colors.blue.shade900,
+          color: colorScheme.primary,
           child: Center(
             child: Column(
               children: [
@@ -179,7 +179,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
                   children: [
                     Text(
                       'Looking for something cool ?',
-                      style: TextStyle(color: Colors.white, fontSize: 24),
+                      style:
+                          TextStyle(color: colorScheme.onPrimary, fontSize: 24),
                     )
                   ],
                 ),
@@ -196,6 +197,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
                         padding: const EdgeInsets.all(8.0),
                         child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
+                              onPrimary: colorScheme.onPrimaryContainer,
+                              primary: colorScheme.inversePrimary,
                               minimumSize: Size(double.infinity, 50),
                             ),
                             onPressed: () {},
@@ -208,6 +211,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
                         padding: const EdgeInsets.all(8.0),
                         child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
+                              onPrimary: colorScheme.onPrimaryContainer,
+                              primary: colorScheme.inversePrimary,
                               minimumSize: Size(double.infinity, 50),
                             ),
                             onPressed: () {},
@@ -220,6 +225,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
                         padding: const EdgeInsets.all(8.0),
                         child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
+                              onPrimary: colorScheme.onPrimaryContainer,
+                              primary: colorScheme.inversePrimary,
                               minimumSize: Size(double.infinity, 50),
                             ),
                             onPressed: () {},
@@ -276,7 +283,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
                             // height: 80,
                             child: Icon(
                               Icons.rocket_launch,
-                              color: Colors.blue,
+                              color: colorScheme.primary,
                               size: 80,
                             ),
                           ),
@@ -329,7 +336,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
                         // height: 80,
                         child: Icon(
                           Icons.book,
-                          color: Colors.blue,
+                          color: colorScheme.primary,
                           size: 80,
                         ),
                       ),
