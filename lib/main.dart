@@ -4,6 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:md_composer_flutter/firebase_options.dart';
 import 'package:md_composer_flutter/providers/color_scheme_provider.dart';
 import 'package:md_composer_flutter/router/router.dart';
+import 'package:responsive_framework/responsive_wrapper.dart';
+import 'package:responsive_framework/utils/scroll_behavior.dart';
 
 // EXAMPLE APP FOLLOWING https://github.com/me-mohit/Gorouter_riverpod
 
@@ -26,6 +28,22 @@ class MyApp extends ConsumerWidget {
     final colorScheme = ref.watch(colorSchemeProvider);
 
     return MaterialApp.router(
+      builder: (context, child) => ResponsiveWrapper.builder(
+        BouncingScrollWrapper.builder(context, child!),
+        // maxWidth: 1000,
+        minWidth: 450,
+        defaultScale: true,
+        breakpoints: [
+          const ResponsiveBreakpoint.resize(450, name: MOBILE),
+          const ResponsiveBreakpoint.autoScale(800, name: TABLET),
+          const ResponsiveBreakpoint.resize(1000, name: TABLET),
+          const ResponsiveBreakpoint.resize(1440, name: DESKTOP),
+          const ResponsiveBreakpoint.resize(2460, name: "4K"),
+        ],
+        background: Container(
+          color: const Color(0xFFF5F5F5),
+        ),
+      ),
       title: 'Flutter Demo',
       theme: ThemeData(
         useMaterial3: true,
@@ -88,23 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(

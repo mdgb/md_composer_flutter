@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -5,6 +6,7 @@ import 'package:md_composer_flutter/providers/cache_provider.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:md_composer_flutter/services/auth_services.dart';
 
 class SplashPage extends ConsumerStatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -18,8 +20,17 @@ class _SplashPageState extends ConsumerState<SplashPage> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 2)).whenComplete(() {
-      context.go('/login');
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      var auth = ref.read(authViewModelProvider.notifier);
+      var currentUser = auth.user;
+      print("Auth: $currentUser");
+      Future.delayed(const Duration(seconds: 2)).whenComplete(() {
+        if (currentUser != null) {
+          context.go('/root');
+        } else {
+          context.go('/login');
+        }
+      });
     });
   }
 

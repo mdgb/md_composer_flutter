@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:md_composer_flutter/ui/widget_library/drawers/drawer_expandable/drawer_expandable.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 class BaseTemplate extends ConsumerWidget {
   final Widget page;
@@ -12,27 +13,27 @@ class BaseTemplate extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    double pageWidth = MediaQuery.of(context).size.width;
-    bool isMobileResolution = pageWidth < 800;
-
     return Scaffold(
-      appBar: isMobileResolution
+      appBar: ResponsiveWrapper.of(context).isSmallerThan(TABLET)
           ? AppBar(
               title: Text(pageTitle),
             )
           : null,
       // drawerScrimColor: Colors.transparent,
-      drawer: isMobileResolution ? DrawerExpandableComponent() : null,
-      body: Container(child: getBodyLayout(isMobileResolution)),
+      drawer: ResponsiveWrapper.of(context).isSmallerThan(TABLET)
+          ? DrawerExpandableComponent()
+          : null,
+      body: getBodyLayout(context, page),
     );
   }
 
-  getBodyLayout(isMobileResolution) {
-    if (isMobileResolution == true) {
-      return ListView(controller: ScrollController(), children: [page]);
+  getBodyLayout(context, page) {
+    if (ResponsiveWrapper.of(context).isSmallerThan(TABLET)) {
+      return page;
     } else {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             width: 200,

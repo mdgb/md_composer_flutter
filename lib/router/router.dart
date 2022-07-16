@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:md_composer_flutter/ui/pages/reponsive_test_page/reponsive_test_page.dart';
 import 'package:md_composer_flutter/ui/splash_screen/splash_screen.dart';
 import 'package:md_composer_flutter/utils/constants.dart';
 
@@ -32,11 +33,11 @@ class RouterNotifier extends ChangeNotifier {
         GoRoute(
           name: rootRouteName,
           path: '/',
-          // pageBuilder: (context, state) => MaterialPage<void>(
-          //   key: state.pageKey,
-          //   child: const SplashPage(),
-          // ),
-          redirect: (state) => state.namedLocation(homeRouteName),
+          pageBuilder: (context, state) => MaterialPage<void>(
+            key: state.pageKey,
+            child: const SplashPage(),
+          ),
+          // redirect: (state) => state.namedLocation(homeRouteName),
         ),
         GoRoute(
           name: 'rootRouteName',
@@ -85,6 +86,15 @@ class RouterNotifier extends ChangeNotifier {
               child: BaseTemplate(page: const HomePage(), pageTitle: 'Home'),
             );
           },
+        ),
+        GoRoute(
+          name: 'responsiveRouteName',
+          path: '/responsive_page',
+          pageBuilder: (context, state) => MaterialPage<void>(
+            key: state.pageKey,
+            child: BaseTemplate(
+                page: const ResponsiveTestPage(), pageTitle: 'responsive page'),
+          ),
         ),
         // forwarding routes to remove the need to put the 'tab' param in the code
         // GoRoute(
