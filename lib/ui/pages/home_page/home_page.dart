@@ -290,7 +290,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
                           MarkdownBody(
                             data: markdownContent,
                             onTapLink: (text, href, title) {
-                              print('HREF $text, $href, $title');
                               href != null ? launchUrl(Uri.parse(href)) : null;
                             },
                           ),

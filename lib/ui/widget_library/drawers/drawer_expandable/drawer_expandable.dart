@@ -65,9 +65,8 @@ class _DrawerExpandableComponentState
             url: '/resetpassword',
             submenus: []),
       ]),
-      const CDM(title: 'PIE', icon: Icons.pie_chart, submenus: [
-        CDM(title: 'PIE 1', icon: Icons.pie_chart, submenus: []),
-      ]),
+      const CDM(
+          title: 'Typography', icon: Icons.font_download, url: '/typography'),
       const CDM(title: 'XXX', icon: Icons.power, submenus: []),
       const CDM(title: 'XXX', icon: Icons.explore, submenus: []),
       CDM(
