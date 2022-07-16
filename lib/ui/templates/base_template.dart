@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:md_composer_flutter/providers/color_scheme_provider.dart';
 import 'package:md_composer_flutter/ui/widget_library/drawers/drawer_expandable/drawer_expandable.dart';
 import 'package:md_composer_flutter/ui/widget_library/settings_panel/settings_panel.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -18,7 +15,6 @@ class BaseTemplate extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final colorScheme = ref.watch(colorSchemeProvider);
     return Scaffold(
       key: _scaffoldKey,
       appBar: ResponsiveWrapper.of(context).isSmallerThan(TABLET)

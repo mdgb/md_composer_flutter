@@ -22,7 +22,7 @@ class SettingsPanel extends ConsumerWidget {
               onColorChanged: (color) {
                 ref.read(colorSchemeProvider.notifier).state =
                     ColorScheme.fromSeed(seedColor: color);
-                return null;
+                // return null;
               },
             ),
           ],

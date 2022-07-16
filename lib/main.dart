@@ -26,7 +26,6 @@ class MyApp extends ConsumerWidget {
     final router = ref.watch(routerProvider);
 
     final colorScheme = ref.watch(colorSchemeProvider);
-    print(colorScheme);
 
     return MaterialApp.router(
       builder: (context, child) => ResponsiveWrapper.builder(
@@ -46,11 +45,6 @@ class MyApp extends ConsumerWidget {
             ),
       ),
       title: 'Flutter Demo',
-      // theme: ThemeData(
-      //   useMaterial3: true,
-      //   colorScheme: colorScheme,
-      //   primaryColor: colorScheme.primary,
-      // ),
       theme: ThemeData.from(colorScheme: colorScheme),
       routeInformationProvider: router.routeInformationProvider,
       routeInformationParser: router.routeInformationParser,
