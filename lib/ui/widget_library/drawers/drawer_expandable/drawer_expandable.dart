@@ -19,7 +19,6 @@ class _DrawerExpandableComponentState
   int depth = 0;
   int selectedIndex = -1;
   String selectedPath = '';
-  Color primaryColor = Color.fromARGB(255, 10, 50, 110);
   Color textColor = Colors.white;
   double drawerWidth = 200;
 
@@ -71,7 +70,12 @@ class _DrawerExpandableComponentState
       ]),
       const CDM(title: 'XXX', icon: Icons.power, submenus: []),
       const CDM(title: 'XXX', icon: Icons.explore, submenus: []),
-      const CDM(title: 'XXX', icon: Icons.settings, submenus: []),
+      CDM(
+          title: 'Settings',
+          icon: Icons.settings,
+          action: () async {
+            Scaffold.of(context).openEndDrawer();
+          }),
     ];
     menuItems.addAll(items);
   }
@@ -79,7 +83,7 @@ class _DrawerExpandableComponentState
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: primaryColor,
+      color: Theme.of(context).primaryColor,
       width: 200,
       child: Row(
         children: [
@@ -148,11 +152,17 @@ class _DrawerExpandableComponentState
                   children: [
                     Row(
                       children: [
-                        Icon(item.icon, color: textColor),
+                        Icon(
+                          item.icon,
+                          color: Theme.of(context).colorScheme.onInverseSurface,
+                        ),
                         SizedBox(width: 8),
                         Text(
                           item.title,
-                          style: TextStyle(color: textColor),
+                          style: TextStyle(
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .onInverseSurface),
                         ),
                       ],
                     ),

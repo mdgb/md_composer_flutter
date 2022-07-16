@@ -41,15 +41,11 @@ class MyApp extends ConsumerWidget {
           const ResponsiveBreakpoint.resize(2460, name: "4K"),
         ],
         background: Container(
-          color: const Color(0xFFF5F5F5),
-        ),
+            // color: const Color(0xFFF5F5F5),
+            ),
       ),
       title: 'Flutter Demo',
-      theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: colorScheme,
-        primaryColor: colorScheme.primary,
-      ),
+      theme: ThemeData.from(colorScheme: colorScheme),
       routeInformationProvider: router.routeInformationProvider,
       routeInformationParser: router.routeInformationParser,
       routerDelegate: router.routerDelegate,
