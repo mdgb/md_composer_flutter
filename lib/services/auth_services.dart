@@ -74,7 +74,6 @@ class AuthViewModel extends ChangeNotifier {
       );
       _loading.end();
     } on FirebaseAuthException catch (e) {
-      print(e.code);
       _loading.stop();
 
       if (e.code == "wrong-password") {

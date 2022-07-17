@@ -1,15 +1,17 @@
 PODS:
+  - audio_session (0.0.1):
+    - FlutterMacOS
   - Firebase/Auth (9.2.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 9.2.0)
   - Firebase/CoreOnly (9.2.0):
     - FirebaseCore (= 9.2.0)
-  - firebase_auth (3.4.1):
+  - firebase_auth (3.4.2):
     - Firebase/Auth (~> 9.2.0)
     - Firebase/CoreOnly (~> 9.2.0)
     - firebase_core
     - FlutterMacOS
-  - firebase_core (1.19.1):
+  - firebase_core (1.19.2):
     - Firebase/CoreOnly (~> 9.2.0)
     - FlutterMacOS
   - FirebaseAuth (9.2.0):
@@ -30,6 +32,9 @@ PODS:
   - FirebaseCoreInternal (9.2.0):
     - "GoogleUtilities/NSData+zlib (~> 7.7)"
   - FlutterMacOS (1.0.0)
+  - FMDB (2.7.5):
+    - FMDB/standard (= 2.7.5)
+  - FMDB/standard (2.7.5)
   - GoogleDataTransport (9.1.4):
     - GoogleUtilities/Environment (~> 7.7)
     - nanopb (< 2.30910.0, >= 2.30908.0)
@@ -50,23 +55,37 @@ PODS:
   - GoogleUtilities/Reachability (7.7.0):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (2.0.0)
+  - just_audio (0.0.1):
+    - FlutterMacOS
   - nanopb (2.30909.0):
     - nanopb/decode (= 2.30909.0)
     - nanopb/encode (= 2.30909.0)
   - nanopb/decode (2.30909.0)
   - nanopb/encode (2.30909.0)
+  - path_provider_macos (0.0.1):
+    - FlutterMacOS
   - PromisesObjC (2.1.1)
   - shared_preferences_macos (0.0.1):
     - FlutterMacOS
+  - sqflite (0.0.2):
+    - FlutterMacOS
+    - FMDB (>= 2.7.5)
   - url_launcher_macos (0.0.1):
+    - FlutterMacOS
+  - wakelock_macos (0.0.1):
     - FlutterMacOS
 
 DEPENDENCIES:
+  - audio_session (from `Flutter/ephemeral/.symlinks/plugins/audio_session/macos`)
   - firebase_auth (from `Flutter/ephemeral/.symlinks/plugins/firebase_auth/macos`)
   - firebase_core (from `Flutter/ephemeral/.symlinks/plugins/firebase_core/macos`)
   - FlutterMacOS (from `Flutter/ephemeral`)
+  - just_audio (from `Flutter/ephemeral/.symlinks/plugins/just_audio/macos`)
+  - path_provider_macos (from `Flutter/ephemeral/.symlinks/plugins/path_provider_macos/macos`)
   - shared_preferences_macos (from `Flutter/ephemeral/.symlinks/plugins/shared_preferences_macos/macos`)
+  - sqflite (from `Flutter/ephemeral/.symlinks/plugins/sqflite/macos`)
   - url_launcher_macos (from `Flutter/ephemeral/.symlinks/plugins/url_launcher_macos/macos`)
+  - wakelock_macos (from `Flutter/ephemeral/.symlinks/plugins/wakelock_macos/macos`)
 
 SPEC REPOS:
   trunk:
@@ -75,6 +94,7 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseCoreDiagnostics
     - FirebaseCoreInternal
+    - FMDB
     - GoogleDataTransport
     - GoogleUtilities
     - GTMSessionFetcher
@@ -82,33 +102,49 @@ SPEC REPOS:
     - PromisesObjC
 
 EXTERNAL SOURCES:
+  audio_session:
+    :path: Flutter/ephemeral/.symlinks/plugins/audio_session/macos
   firebase_auth:
     :path: Flutter/ephemeral/.symlinks/plugins/firebase_auth/macos
   firebase_core:
     :path: Flutter/ephemeral/.symlinks/plugins/firebase_core/macos
   FlutterMacOS:
     :path: Flutter/ephemeral
+  just_audio:
+    :path: Flutter/ephemeral/.symlinks/plugins/just_audio/macos
+  path_provider_macos:
+    :path: Flutter/ephemeral/.symlinks/plugins/path_provider_macos/macos
   shared_preferences_macos:
     :path: Flutter/ephemeral/.symlinks/plugins/shared_preferences_macos/macos
+  sqflite:
+    :path: Flutter/ephemeral/.symlinks/plugins/sqflite/macos
   url_launcher_macos:
     :path: Flutter/ephemeral/.symlinks/plugins/url_launcher_macos/macos
+  wakelock_macos:
+    :path: Flutter/ephemeral/.symlinks/plugins/wakelock_macos/macos
 
 SPEC CHECKSUMS:
+  audio_session: dea1f41890dbf1718f04a56f1d6150fd50039b72
   Firebase: 4ba896cb8e5105d4b9e247e1c1b6222b548df55a
-  firebase_auth: e1a73aa377a04ee34810fb5cbbc284245e0d05ad
-  firebase_core: 59ec50cc07e85596b4169b30976730a05a020b45
+  firebase_auth: 4fc029d315cd50cc7ae9304cca68c1abdc9959c2
+  firebase_core: 5454628950db3c7f5f178dccf4b3b2ed76ca467a
   FirebaseAuth: 1c574ab64a051dd86dbe7fd5a3f86b58155b3482
   FirebaseCore: 0e27f2a15d8f7b7ef11e7d93e23b1cbab55d748c
   FirebaseCoreDiagnostics: ad3f6c68b7c5b63b7cf15b0785d7137f05f32268
   FirebaseCoreInternal: cb966328b6985dbd6f535e1461291063e1c4a00f
   FlutterMacOS: 57701585bf7de1b3fc2bb61f6378d73bbdea8424
+  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   GoogleDataTransport: 5fffe35792f8b96ec8d6775f5eccd83c998d5a3b
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
   GTMSessionFetcher: 681175626052e03fdde7952f7e9c7a9785719506
+  just_audio: 9b67ca7b97c61cfc9784ea23cd8cc55eb226d489
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
+  path_provider_macos: 3c0c3b4b0d4a76d2bf989a913c2de869c5641a19
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
   shared_preferences_macos: a64dc611287ed6cbe28fd1297898db1336975727
+  sqflite: a5789cceda41d54d23f31d6de539d65bb14100ea
   url_launcher_macos: cd744d9e54ce4e6d74b4b2d024c7626076176613
+  wakelock_macos: bc3f2a9bd8d2e6c89fee1e1822e7ddac3bd004a9
 
 PODFILE CHECKSUM: 8d40c19d3cbdb380d870685c3a564c989f1efa52
 

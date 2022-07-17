@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:md_composer_flutter/ui/pages/factory_test/factory_test_widget.dart';
+import 'package:md_composer_flutter/ui/pages/forms/forms_page.dart';
 import 'package:md_composer_flutter/ui/pages/reponsive_test_page/reponsive_test_page.dart';
 import 'package:md_composer_flutter/ui/pages/typography_page/typography_page.dart';
 import 'package:md_composer_flutter/ui/splash_screen/splash_screen.dart';
@@ -104,6 +106,24 @@ class RouterNotifier extends ChangeNotifier {
             key: state.pageKey,
             child: BaseTemplate(
                 page: const TypographyPage(), pageTitle: 'Typography'),
+          ),
+        ),
+        GoRoute(
+          name: 'forms',
+          path: '/forms',
+          pageBuilder: (context, state) => MaterialPage<void>(
+            key: state.pageKey,
+            child: BaseTemplate(
+                page: FormBuilderExamplePage(), pageTitle: 'Forms Example'),
+          ),
+        ),
+        GoRoute(
+          name: 'factory',
+          path: '/factory',
+          pageBuilder: (context, state) => MaterialPage<void>(
+            key: state.pageKey,
+            child: BaseTemplate(
+                page: FactoryTestWidgets(), pageTitle: 'Factory Test'),
           ),
         ),
         // forwarding routes to remove the need to put the 'tab' param in the code

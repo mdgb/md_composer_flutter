@@ -3,10 +3,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
-import 'package:html_editor_enhanced/html_editor.dart';
+// import 'package:html_editor_enhanced/html_editor.dart';
 import 'package:md_composer_flutter/providers/color_scheme_provider.dart';
 import 'package:md_composer_flutter/ui/pages/typography_page/typografy_provider.dart';
-import 'package:text_editor/text_editor.dart';
+// import 'package:text_editor/text_editor.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:markdown/markdown.dart' as md;
 
@@ -18,7 +18,7 @@ class TypographyPage extends ConsumerWidget {
     final colorScheme = ref.watch(colorSchemeProvider);
     final example = ref.watch(typographyProvider);
     return ListView(
-      padding: EdgeInsets.all(24),
+      padding: const EdgeInsets.all(24),
       controller: ScrollController(),
       children: [
         DropdownButton(
@@ -37,14 +37,14 @@ class TypographyPage extends ConsumerWidget {
           },
         ),
         if (example == 'Markdown') exampleMarkdown(colorScheme: colorScheme),
-        if (example == 'HTML') const exampleHTML()
+        if (example == 'HTML') const ExampleHTML()
       ],
     );
   }
 }
 
-class exampleHTML extends StatelessWidget {
-  const exampleHTML({Key? key}) : super(key: key);
+class ExampleHTML extends StatelessWidget {
+  const ExampleHTML({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

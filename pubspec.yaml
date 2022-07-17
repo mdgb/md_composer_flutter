@@ -47,8 +47,8 @@ dependencies:
   flutter_colorpicker: ^1.0.3
   html: ^0.15.0
   flutter_widget_from_html: ^0.8.5
-  html_editor_enhanced: ^1.8.0
-  text_editor: ^0.7.0
+  flutter_form_builder: ^7.4.0
+  form_builder_extra_fields: ^8.2.0
 
 dev_dependencies:
   flutter_test:
@@ -75,6 +75,7 @@ flutter:
   assets:
     - assets/markDownExample.md
     - assets/htmlTypography.html
+    - assets/video/layout.gif
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

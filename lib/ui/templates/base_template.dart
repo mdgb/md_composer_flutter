@@ -38,15 +38,24 @@ class BaseTemplate extends ConsumerWidget {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
+        textDirection: TextDirection.rtl,
         children: [
+          Expanded(
+            child: page,
+          ),
           Container(
             width: 200,
             height: double.infinity,
+            decoration: BoxDecoration(boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.5),
+                spreadRadius: 5,
+                blurRadius: 5,
+                offset: const Offset(0, 5),
+              ),
+            ]),
             child: DrawerExpandableComponent(),
           ),
-          Expanded(
-            child: page,
-          )
         ],
       );
     }

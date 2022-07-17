@@ -67,7 +67,11 @@ class _DrawerExpandableComponentState
       ]),
       const CDM(
           title: 'Typography', icon: Icons.font_download, url: '/typography'),
-      const CDM(title: 'XXX', icon: Icons.power, submenus: []),
+      const CDM(title: 'Forms', icon: Icons.input, url: '/forms'),
+      const CDM(
+          title: 'Factory Test',
+          icon: Icons.account_tree_outlined,
+          url: '/factory'),
       const CDM(title: 'XXX', icon: Icons.explore, submenus: []),
       CDM(
           title: 'Settings',

@@ -1,14 +1,8 @@
-///HOMEPAGE MENE YAHA PAR HE BOTTOMNAVIGATION USE KIYA HAI
-///KYUNKI CODE CHHOTA HAI ISLIYE
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:md_composer_flutter/providers/color_scheme_provider.dart';
 import 'package:md_composer_flutter/providers/drawer_menu_provider.dart';
-import 'package:md_composer_flutter/services/auth_services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -29,6 +23,13 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
   # Fuse is a learning source
   With well commented and structured source code, whether a beginner or a seasoned React developer, you will find something interesting in Fuse React.
 ''';
+
+  static const String markdownContent3 = ''' 
+  It's always a burden to create different layouts for different areas of an app.
+Fuse React makes this easier with built in layout management and allows for different layouts for different pages/routes.
+This makes extremely easy to create and have simple and complex layouts together like a Login page or a Mail app.
+Page/route based Color management and theme configuration compatible with Material UI Next.
+  ''';
 
   Widget build(BuildContext context, WidgetRef ref) {
     final _selectedDestination = ref.watch(selectedDrawerMenuProvider);
@@ -313,7 +314,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
             ),
           ],
         ),
-        SizedBox(height: 40),
+        const SizedBox(height: 40),
         Container(
           child: ResponsiveRowColumn(
             rowMainAxisAlignment: MainAxisAlignment.center,
@@ -363,6 +364,45 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
             ],
           ),
         ),
+        const SizedBox(height: 40),
+        Center(
+          child: Container(
+            padding: EdgeInsets.all(32),
+            width: ResponsiveWrapper.of(context).isLargerThan(DESKTOP)
+                ? MediaQuery.of(context).size.width / 2
+                : null,
+            child: Column(
+              children: [
+                Icon(
+                  Icons.amp_stories_rounded,
+                  color: colorScheme.primary,
+                  size: 80,
+                ),
+                const Text(
+                  'Multiple layouts & themes',
+                  style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 24),
+                Text('Setting up a page layout is a breeze with Fuse React.'),
+                SizedBox(height: 24),
+                MarkdownBody(
+                  data: markdownContent3,
+                  onTapLink: (text, href, title) {
+                    href != null ? launchUrl(Uri.parse(href)) : null;
+                  },
+                  styleSheet:
+                      MarkdownStyleSheet(textAlign: WrapAlignment.spaceEvenly),
+                ),
+                SizedBox(height: 24),
+                Image(
+                  fit: BoxFit.cover,
+                  image: AssetImage('assets/video/layout.gif'),
+                ),
+              ],
+            ),
+          ),
+        ),
+        const SizedBox(height: 40),
       ],
     );
   }

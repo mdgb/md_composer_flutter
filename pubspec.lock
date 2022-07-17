@@ -15,6 +15,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.2.0"
+  archive:
+    dependency: transitive
+    description:
+      name: archive
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.3.0"
   args:
     dependency: transitive
     description:
@@ -35,7 +42,7 @@ packages:
       name: audio_session
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.9"
+    version: "0.1.10"
   boolean_selector:
     dependency: transitive
     description:
@@ -56,7 +63,7 @@ packages:
       name: build_config
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.0"
+    version: "1.1.0"
   build_daemon:
     dependency: transitive
     description:
@@ -77,7 +84,7 @@ packages:
       name: build_runner
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.11"
+    version: "2.2.0"
   build_runner_core:
     dependency: transitive
     description:
@@ -98,7 +105,7 @@ packages:
       name: built_value
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "8.3.3"
+    version: "8.4.0"
   cached_network_image:
     dependency: transitive
     description:
@@ -204,6 +211,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.2.3"
+  dropdown_search:
+    dependency: transitive
+    description:
+      name: dropdown_search
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.0.1"
   fake_async:
     dependency: transitive
     description:
@@ -231,28 +245,28 @@ packages:
       name: firebase_auth
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.4.1"
+    version: "3.4.2"
   firebase_auth_platform_interface:
     dependency: transitive
     description:
       name: firebase_auth_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.3.1"
+    version: "6.3.2"
   firebase_auth_web:
     dependency: transitive
     description:
       name: firebase_auth_web
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.3.19"
+    version: "4.0.0"
   firebase_core:
     dependency: "direct main"
     description:
       name: firebase_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.19.1"
+    version: "1.19.2"
   firebase_core_platform_interface:
     dependency: transitive
     description:
@@ -266,7 +280,7 @@ packages:
       name: firebase_core_web
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.6.6"
+    version: "1.7.0"
   fixnum:
     dependency: transitive
     description:
@@ -293,6 +307,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.3.0"
+  flutter_chips_input:
+    dependency: transitive
+    description:
+      name: flutter_chips_input
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
   flutter_colorpicker:
     dependency: "direct main"
     description:
@@ -300,13 +321,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.3"
-  flutter_inappwebview:
+  flutter_datetime_picker_bdaya:
     dependency: transitive
     description:
-      name: flutter_inappwebview
+      name: flutter_datetime_picker_bdaya
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.4.3+7"
+    version: "2.0.0"
+  flutter_form_builder:
+    dependency: "direct main"
+    description:
+      name: flutter_form_builder
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "7.4.0"
   flutter_keyboard_visibility:
     dependency: transitive
     description:
@@ -342,6 +370,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.6.10+2"
+  flutter_rating_bar:
+    dependency: transitive
+    description:
+      name: flutter_rating_bar
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.0.1"
   flutter_riverpod:
     dependency: "direct main"
     description:
@@ -368,6 +403,20 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_touch_spin:
+    dependency: transitive
+    description:
+      name: flutter_touch_spin
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
+  flutter_typeahead:
+    dependency: transitive
+    description:
+      name: flutter_typeahead
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.0.0"
   flutter_web_plugins:
     dependency: transitive
     description: flutter
@@ -387,6 +436,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.8.5+3"
+  form_builder_extra_fields:
+    dependency: "direct main"
+    description:
+      name: form_builder_extra_fields
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "8.2.0"
   frontend_server_client:
     dependency: transitive
     description:
@@ -478,13 +534,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.15.0"
-  html_editor_enhanced:
-    dependency: "direct main"
-    description:
-      name: html_editor_enhanced
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.8.0"
   http:
     dependency: transitive
     description:
@@ -506,6 +555,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.1"
+  image:
+    dependency: transitive
+    description:
+      name: image
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.2.0"
   intl:
     dependency: transitive
     description:
@@ -856,6 +912,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.2"
+  signature:
+    dependency: transitive
+    description:
+      name: signature
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.1.0"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -938,13 +1001,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.9"
-  text_editor:
-    dependency: "direct main"
-    description:
-      name: text_editor
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.7.0"
   timing:
     dependency: transitive
     description:
@@ -965,7 +1021,7 @@ packages:
       name: url_launcher
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.1.4"
+    version: "6.1.5"
   url_launcher_android:
     dependency: transitive
     description:
@@ -1064,13 +1120,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.10"
-  visibility_detector:
-    dependency: transitive
-    description:
-      name: visibility_detector
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.2.2"
   wakelock:
     dependency: transitive
     description:
