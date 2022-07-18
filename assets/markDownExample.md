@@ -214,6 +214,9 @@ It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
 
 \*[HTML]: Hyper Text Markup Language
 
+[HTML]: <p>The <abbr title="Hyper Text Markup Language">HTML</abbr> specification
+is maintained by the <abbr title="World Wide Web Consortium">W3C</abbr>.</p>
+
 ### [Custom containers](https://github.com/markdown-it/markdown-it-container)
 
 ::: warning

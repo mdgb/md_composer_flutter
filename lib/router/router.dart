@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:md_composer_flutter/ui/pages/factory_test/factory_test_widget.dart';
 import 'package:md_composer_flutter/ui/pages/forms/forms_page.dart';
 import 'package:md_composer_flutter/ui/pages/reponsive_test_page/reponsive_test_page.dart';
+import 'package:md_composer_flutter/ui/pages/slivers_page/sliver_sticky.dart';
 import 'package:md_composer_flutter/ui/pages/typography_page/typography_page.dart';
 import 'package:md_composer_flutter/ui/splash_screen/splash_screen.dart';
 import 'package:md_composer_flutter/utils/constants.dart';
@@ -124,6 +125,15 @@ class RouterNotifier extends ChangeNotifier {
             key: state.pageKey,
             child: BaseTemplate(
                 page: FactoryTestWidgets(), pageTitle: 'Factory Test'),
+          ),
+        ),
+        GoRoute(
+          name: 'sticky_box',
+          path: '/sticky_box',
+          pageBuilder: (context, state) => MaterialPage<void>(
+            key: state.pageKey,
+            child:
+                BaseTemplate(page: StickyBox(), pageTitle: 'StickyBox Sliver'),
           ),
         ),
         // forwarding routes to remove the need to put the 'tab' param in the code

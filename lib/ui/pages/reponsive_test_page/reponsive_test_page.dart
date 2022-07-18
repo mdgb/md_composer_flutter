@@ -8,6 +8,7 @@ import 'package:md_composer_flutter/ui/pages/reponsive_test_page/examples/respon
 import 'package:md_composer_flutter/ui/pages/reponsive_test_page/examples/staggered_gridcounte_example.dart';
 import 'package:md_composer_flutter/ui/pages/reponsive_test_page/examples/wrap_example.dart';
 import 'package:md_composer_flutter/ui/pages/reponsive_test_page/responsive_test_provider.dart';
+import 'package:md_composer_flutter/utils/functions.dart';
 
 class ResponsiveTestPage extends ConsumerWidget {
   final examples = const <String>[
@@ -126,10 +127,6 @@ class ResponsiveTestPage extends ConsumerWidget {
         ],
       ),
     );
-  }
-
-  getRandomColor() {
-    return Colors.primaries[Random().nextInt(Colors.primaries.length)];
   }
 
   getRandomColors(int) {

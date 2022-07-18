@@ -106,10 +106,10 @@ class exampleMarkdown extends StatelessWidget {
                         color: colorScheme.onInverseSurface)),
                 selectable: true,
                 extensionSet: md.ExtensionSet(
-                  md.ExtensionSet.gitHubFlavored.blockSyntaxes,
+                  md.ExtensionSet.gitHubWeb.blockSyntaxes,
                   [
                     md.EmojiSyntax(),
-                    // ...md.ExtensionSet.gitHubFlavored.inlineSyntaxes
+                    ...md.ExtensionSet.gitHubFlavored.inlineSyntaxes
                   ],
                 ),
                 fitContent: true,

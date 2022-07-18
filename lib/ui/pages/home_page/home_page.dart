@@ -160,7 +160,7 @@ Page/route based Color management and theme configuration compatible with Materi
           width: double.infinity,
           // transform: Matrix4.translationValues(0.0, -150.0, 0.0),
           child: Column(
-            children: [
+            children: const [
               Center(
                 child: Text('Lorem ipsum dolor sit amet...',
                     style: TextStyle(fontSize: 24)),
@@ -403,6 +403,74 @@ Page/route based Color management and theme configuration compatible with Materi
           ),
         ),
         const SizedBox(height: 40),
+        Padding(
+          padding: const EdgeInsets.all(32),
+          child: ResponsiveRowColumn(
+            rowMainAxisAlignment: MainAxisAlignment.center,
+            rowCrossAxisAlignment: CrossAxisAlignment.start,
+            layout: ResponsiveWrapper.of(context).isSmallerThan(TABLET)
+                ? ResponsiveRowColumnType.COLUMN
+                : ResponsiveRowColumnType.ROW,
+            children: [
+              ResponsiveRowColumnItem(
+                rowFlex: 1,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    key: key,
+                    children: [
+                      Icon(
+                        Icons.amp_stories_rounded,
+                        color: colorScheme.primary,
+                        size: 80,
+                      ),
+                      const Text(
+                        'Multiple layouts & themes',
+                        style: TextStyle(
+                            fontSize: 48, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(height: 24),
+                      Text(
+                          'Setting up a page layout is a breeze with Fuse React.'),
+                      const SizedBox(height: 40),
+                    ],
+                  ),
+                ),
+              ),
+              ResponsiveRowColumnItem(
+                rowFlex: 1,
+                child: Container(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: const [
+                      Image(
+                        image: NetworkImage(
+                            'https://fusetheme.com/static/assets/react/theme-layouts/layout-1-slide.png'),
+                      ),
+                      SizedBox(height: 24),
+                      Image(
+                        image: NetworkImage(
+                            'https://fusetheme.com/static/assets/react/theme-layouts/layout-1-folded.png'),
+                      ),
+                      SizedBox(height: 24),
+                      Image(
+                        image: NetworkImage(
+                            'https://fusetheme.com/static/assets/react/theme-layouts/layout-1-tabbed.png'),
+                      ),
+                      SizedBox(height: 24),
+                      Image(
+                        image: NetworkImage(
+                            'https://fusetheme.com/static/assets/react/theme-layouts/layout-1-tabbed-dense.png'),
+                      ),
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
+        )
       ],
     );
   }

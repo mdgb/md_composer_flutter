@@ -72,7 +72,13 @@ class _DrawerExpandableComponentState
           title: 'Factory Test',
           icon: Icons.account_tree_outlined,
           url: '/factory'),
-      const CDM(title: 'XXX', icon: Icons.explore, submenus: []),
+      const CDM(title: 'Slivers', icon: Icons.arrow_downward, submenus: [
+        const CDM(
+            title: 'Sticky box',
+            icon: Icons.explore,
+            submenus: [],
+            url: '/sticky_box'),
+      ]),
       CDM(
           title: 'Settings',
           icon: Icons.settings,
