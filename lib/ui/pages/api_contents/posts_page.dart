@@ -11,24 +11,37 @@ class Posts extends StatefulWidget {
   State<Posts> createState() => _PostsState();
 }
 
+class Post {
+  final String title;
+  final String body;
+
+  const Post({
+    required this.title,
+    required this.body,
+  });
+
+  static Post fromJson(json) => Post(
+        title: json['title'],
+        body: json['body'],
+      );
+}
+
 class _PostsState extends State<Posts> {
-  List<dynamic> posts = [];
+  List<Post> posts = [];
 
   final url = Uri.parse('https://jsonplaceholder.typicode.com/posts');
   @override
   void initState() {
     super.initState();
-    print('INIT STATE');
     getPostsFromAPI();
   }
 
   getPostsFromAPI() async {
-    print('INSIDE ASYNC');
     var response = await http.get(url);
     if (response.statusCode == 200) {
-      final List items = json.decode(response.body);
+      final items = json.decode(response.body);
       setState(() {
-        posts = items;
+        posts = items.map<Post>(Post.fromJson).toList();
       });
     }
   }
@@ -50,10 +63,8 @@ class _PostsState extends State<Posts> {
                   ListTile(
                     contentPadding: EdgeInsets.all(10),
                     dense: false,
-                    title:
-                        Text(capitalize(posts[i]['title']?.toString() ?? '  ')),
-                    subtitle:
-                        Text(capitalize(posts[i]['body']?.toString() ?? '  ')),
+                    title: Text(capitalize(posts[i].title.toString())),
+                    subtitle: Text(capitalize(posts[i].body.toString())),
                   ),
                 ],
               ),
