@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:md_composer_flutter/ui/pages/api_contents/post_details_page.dart';
 import 'package:md_composer_flutter/ui/pages/api_contents/posts_page.dart';
 import 'package:md_composer_flutter/ui/pages/factory_test/factory_test_widget.dart';
 import 'package:md_composer_flutter/ui/pages/forms/forms_page.dart';
@@ -138,12 +139,18 @@ class RouterNotifier extends ChangeNotifier {
           ),
         ),
         GoRoute(
-          name: 'api',
+          name: 'posts',
           path: '/posts',
           pageBuilder: (context, state) => MaterialPage<void>(
             key: state.pageKey,
             child: BaseTemplate(page: Posts(), pageTitle: 'Posts'),
           ),
+        ),
+        GoRoute(
+          name: 'post_detail',
+          path: '/post_detail',
+          builder: (context, state) =>
+              PostDetailPage(post: state.extra! as Post),
         ),
         // forwarding routes to remove the need to put the 'tab' param in the code
         // GoRoute(

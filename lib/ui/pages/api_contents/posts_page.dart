@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:http/http.dart' as http;
 import 'package:md_composer_flutter/utils/functions.dart';
 
@@ -65,6 +66,10 @@ class _PostsState extends State<Posts> {
                     dense: false,
                     title: Text(capitalize(posts[i].title.toString())),
                     subtitle: Text(capitalize(posts[i].body.toString())),
+                    trailing: Icon(Icons.arrow_circle_right),
+                    onTap: () {
+                      GoRouter.of(context).go('/post_detail', extra: posts[i]);
+                    },
                   ),
                 ],
               ),
