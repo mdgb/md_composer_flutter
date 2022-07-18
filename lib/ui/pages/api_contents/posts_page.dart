@@ -5,13 +5,6 @@ import 'package:go_router/go_router.dart';
 import 'package:http/http.dart' as http;
 import 'package:md_composer_flutter/utils/functions.dart';
 
-class Posts extends StatefulWidget {
-  Posts({Key? key}) : super(key: key);
-
-  @override
-  State<Posts> createState() => _PostsState();
-}
-
 class Post {
   final String title;
   final String body;
@@ -25,6 +18,13 @@ class Post {
         title: json['title'],
         body: json['body'],
       );
+}
+
+class Posts extends StatefulWidget {
+  Posts({Key? key}) : super(key: key);
+
+  @override
+  State<Posts> createState() => _PostsState();
 }
 
 class _PostsState extends State<Posts> {

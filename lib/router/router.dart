@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:md_composer_flutter/ui/pages/api_contents/gallery_detail_page.dart';
+import 'package:md_composer_flutter/ui/pages/api_contents/gallery_page.dart';
 import 'package:md_composer_flutter/ui/pages/api_contents/post_details_page.dart';
 import 'package:md_composer_flutter/ui/pages/api_contents/posts_page.dart';
 import 'package:md_composer_flutter/ui/pages/factory_test/factory_test_widget.dart';
@@ -151,6 +153,20 @@ class RouterNotifier extends ChangeNotifier {
           path: '/post_detail',
           builder: (context, state) =>
               PostDetailPage(post: state.extra! as Post),
+        ),
+        GoRoute(
+          name: 'gallery',
+          path: '/gallery',
+          pageBuilder: (context, state) => MaterialPage<void>(
+            key: state.pageKey,
+            child: BaseTemplate(page: GalleryPage(), pageTitle: 'Gallery'),
+          ),
+        ),
+        GoRoute(
+          name: 'gallery_detail',
+          path: '/gallery_detail',
+          builder: (context, state) =>
+              GalleryDetailPage(galleryItem: state.extra! as GalleryItem),
         ),
         // forwarding routes to remove the need to put the 'tab' param in the code
         // GoRoute(

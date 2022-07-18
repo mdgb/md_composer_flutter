@@ -85,6 +85,11 @@ class _DrawerExpandableComponentState
             icon: Icons.text_fields_outlined,
             submenus: [],
             url: '/posts'),
+        CDM(
+            title: 'Gallery',
+            icon: Icons.text_fields_outlined,
+            submenus: [],
+            url: '/gallery'),
       ]),
       CDM(
           title: 'Settings',

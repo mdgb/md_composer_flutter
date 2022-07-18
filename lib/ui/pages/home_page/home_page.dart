@@ -103,14 +103,14 @@ Page/route based Color management and theme configuration compatible with Materi
                       textAlign: TextAlign.center,
                     ),
                   ),
-                  SizedBox(height: 80),
+                  const SizedBox(height: 80),
                   AnimatedContainer(
-                    duration: Duration(milliseconds: 250),
+                    duration: const Duration(milliseconds: 250),
                     width: ResponsiveValue(
                       context,
                       defaultValue: 400.0,
                       valueWhen: [
-                        Condition.smallerThan(name: MOBILE, value: 300.0),
+                        const Condition.smallerThan(name: MOBILE, value: 300.0),
                         Condition.largerThan(
                             name: TABLET,
                             value: MediaQuery.of(context).size.width / 2),
@@ -170,7 +170,7 @@ Page/route based Color management and theme configuration compatible with Materi
           ),
         ),
         Container(
-          padding: EdgeInsets.fromLTRB(20, 40, 20, 40),
+          padding: const EdgeInsets.fromLTRB(20, 40, 20, 40),
           color: colorScheme.primary,
           child: Center(
             child: Column(
@@ -185,7 +185,7 @@ Page/route based Color management and theme configuration compatible with Materi
                     )
                   ],
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 ResponsiveRowColumn(
                   layout: ResponsiveWrapper.of(context).isSmallerThan(TABLET)
                       ? ResponsiveRowColumnType.COLUMN
@@ -200,10 +200,10 @@ Page/route based Color management and theme configuration compatible with Materi
                             style: ElevatedButton.styleFrom(
                               onPrimary: colorScheme.onPrimaryContainer,
                               primary: colorScheme.inversePrimary,
-                              minimumSize: Size(double.infinity, 50),
+                              minimumSize: const Size(double.infinity, 50),
                             ),
                             onPressed: () {},
-                            child: Text('Ehia!!!')),
+                            child: const Text('Ehia!!!')),
                       ),
                     ),
                     ResponsiveRowColumnItem(
@@ -214,10 +214,10 @@ Page/route based Color management and theme configuration compatible with Materi
                             style: ElevatedButton.styleFrom(
                               onPrimary: colorScheme.onPrimaryContainer,
                               primary: colorScheme.inversePrimary,
-                              minimumSize: Size(double.infinity, 50),
+                              minimumSize: const Size(double.infinity, 50),
                             ),
                             onPressed: () {},
-                            child: Text('Eeeehiaaaaa!!!')),
+                            child: const Text('Eeeehiaaaaa!!!')),
                       ),
                     ),
                     ResponsiveRowColumnItem(
@@ -228,10 +228,10 @@ Page/route based Color management and theme configuration compatible with Materi
                             style: ElevatedButton.styleFrom(
                               onPrimary: colorScheme.onPrimaryContainer,
                               primary: colorScheme.inversePrimary,
-                              minimumSize: Size(double.infinity, 50),
+                              minimumSize: const Size(double.infinity, 50),
                             ),
                             onPressed: () {},
-                            child: Text('Eeeehia!!!')),
+                            child: const Text('Eeeehia!!!')),
                       ),
                     ),
                   ],
@@ -264,7 +264,7 @@ Page/route based Color management and theme configuration compatible with Materi
               ),
             ),
             Container(
-              padding: EdgeInsets.only(bottom: 50),
+              padding: const EdgeInsets.only(bottom: 50),
               child: ResponsiveRowColumn(
                 rowMainAxisAlignment: MainAxisAlignment.center,
                 layout: ResponsiveWrapper.of(context).isSmallerThan(TABLET)
@@ -274,7 +274,7 @@ Page/route based Color management and theme configuration compatible with Materi
                   ResponsiveRowColumnItem(
                     rowFlex: 1,
                     child: Container(
-                      padding: EdgeInsets.all(32),
+                      padding: const EdgeInsets.all(32),
                       // color: Colors.green,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -301,7 +301,7 @@ Page/route based Color management and theme configuration compatible with Materi
                   ResponsiveRowColumnItem(
                     rowFlex: 1,
                     child: Container(
-                      padding: EdgeInsets.all(32),
+                      padding: const EdgeInsets.all(32),
                       child: const Image(
                         fit: BoxFit.cover,
                         image: NetworkImage(
@@ -326,7 +326,7 @@ Page/route based Color management and theme configuration compatible with Materi
               ResponsiveRowColumnItem(
                 rowFlex: 1,
                 child: Container(
-                  padding: EdgeInsets.all(32),
+                  padding: const EdgeInsets.all(32),
                   // color: Colors.green,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -353,7 +353,7 @@ Page/route based Color management and theme configuration compatible with Materi
               ResponsiveRowColumnItem(
                 rowFlex: 1,
                 child: Container(
-                  padding: EdgeInsets.all(32),
+                  padding: const EdgeInsets.all(32),
                   child: const Image(
                     fit: BoxFit.cover,
                     image: NetworkImage(
@@ -367,7 +367,7 @@ Page/route based Color management and theme configuration compatible with Materi
         const SizedBox(height: 40),
         Center(
           child: Container(
-            padding: EdgeInsets.all(32),
+            padding: const EdgeInsets.all(32),
             width: ResponsiveWrapper.of(context).isLargerThan(DESKTOP)
                 ? MediaQuery.of(context).size.width / 2
                 : null,
@@ -382,9 +382,10 @@ Page/route based Color management and theme configuration compatible with Materi
                   'Multiple layouts & themes',
                   style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 24),
-                Text('Setting up a page layout is a breeze with Fuse React.'),
-                SizedBox(height: 24),
+                const SizedBox(height: 24),
+                const Text(
+                    'Setting up a page layout is a breeze with Fuse React.'),
+                const SizedBox(height: 24),
                 MarkdownBody(
                   data: markdownContent3,
                   onTapLink: (text, href, title) {
@@ -393,8 +394,8 @@ Page/route based Color management and theme configuration compatible with Materi
                   styleSheet:
                       MarkdownStyleSheet(textAlign: WrapAlignment.spaceEvenly),
                 ),
-                SizedBox(height: 24),
-                Image(
+                const SizedBox(height: 24),
+                const Image(
                   fit: BoxFit.cover,
                   image: AssetImage('assets/video/layout.gif'),
                 ),
@@ -429,8 +430,8 @@ Page/route based Color management and theme configuration compatible with Materi
                         style: TextStyle(
                             fontSize: 48, fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(height: 24),
-                      Text(
+                      const SizedBox(height: 24),
+                      const Text(
                           'Setting up a page layout is a breeze with Fuse React.'),
                       const SizedBox(height: 40),
                     ],
