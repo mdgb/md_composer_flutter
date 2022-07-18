@@ -73,11 +73,18 @@ class _DrawerExpandableComponentState
           icon: Icons.account_tree_outlined,
           url: '/factory'),
       const CDM(title: 'Slivers', icon: Icons.arrow_downward, submenus: [
-        const CDM(
+        CDM(
             title: 'Sticky box',
             icon: Icons.explore,
             submenus: [],
             url: '/sticky_box'),
+      ]),
+      const CDM(title: 'API Contents', icon: Icons.api, submenus: [
+        CDM(
+            title: 'Posts',
+            icon: Icons.text_fields_outlined,
+            submenus: [],
+            url: '/posts'),
       ]),
       CDM(
           title: 'Settings',
