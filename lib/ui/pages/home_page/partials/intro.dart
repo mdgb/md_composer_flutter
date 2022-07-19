@@ -13,7 +13,23 @@ class Intro extends StatefulWidget {
   State<Intro> createState() => _IntroState();
 }
 
-class _IntroState extends State<Intro> {
+class _IntroState extends State<Intro> with TickerProviderStateMixin {
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller =
+        AnimationController(duration: const Duration(seconds: 3), vsync: this);
+    _controller.repeat(reverse: true);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -21,17 +37,10 @@ class _IntroState extends State<Intro> {
       children: [
         Positioned.fill(
           bottom: 150,
-          child: TweenAnimationBuilder<Duration>(
-            duration: Duration(milliseconds: 10000),
-            tween:
-                Tween(begin: Duration(milliseconds: 10000), end: Duration.zero),
-            onEnd: () {
-              print('Timer ended');
-            },
-            builder: (BuildContext context, Duration value, Widget? child) {
-              final minutes = value.inMinutes;
-              final seconds = value.inSeconds % 60;
-              final milliseconds = value.inMilliseconds;
+          child: AnimatedBuilder(
+            animation: _controller,
+            builder: (BuildContext context, Widget? child) {
+              final milliseconds = _controller.value;
               return ClipPath(
                 clipper: BackgroundClipper1(seconds: milliseconds),
                 child: Container(
@@ -149,7 +158,7 @@ class _IntroState extends State<Intro> {
 }
 
 class BackgroundClipper1 extends CustomClipper<Path> {
-  int seconds = 0;
+  double seconds = 0;
   BackgroundClipper1({Key? key, required this.seconds});
 
   @override
@@ -158,7 +167,7 @@ class BackgroundClipper1 extends CustomClipper<Path> {
     path.lineTo(0, size.height);
     // path.lineTo(size.width, size.height);
     path.quadraticBezierTo(
-      size.width * seconds / 10000,
+      size.width * seconds,
       size.height - 150,
       size.width,
       size.height,
@@ -171,7 +180,7 @@ class BackgroundClipper1 extends CustomClipper<Path> {
 
   @override
   bool shouldReclip(CustomClipper<Path> oldClipper) {
-    print(seconds);
+    // print(seconds);
     return true;
   }
 }
