@@ -91,7 +91,7 @@ class SlidingSticky extends ConsumerWidget {
       padding: const EdgeInsets.all(8.0),
       child: Column(
         children: [
-          SizedBox(height: offsetTop),
+          // SizedBox(height: offsetTop),
           Icon(
             Icons.amp_stories_rounded,
             color: colorScheme.primary,

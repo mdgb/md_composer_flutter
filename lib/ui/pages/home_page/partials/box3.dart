@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:lottie/lottie.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -55,13 +56,14 @@ class box3 extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        // width: 80,
-                        // height: 80,
-                        child: Icon(
-                          Icons.rocket_launch,
-                          color: colorScheme.primary,
-                          size: 80,
-                        ),
+                        width: 200,
+                        height: 200,
+                        // child: Icon(
+                        //   Icons.rocket_launch,
+                        //   color: colorScheme.primary,
+                        //   size: 80,
+                        // ),
+                        child: Lottie.asset('assets/lottie/94719-rocket.json'),
                       ),
                       MarkdownBody(
                         data: markdownContent,

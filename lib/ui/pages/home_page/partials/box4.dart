@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:lottie/lottie.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -33,11 +34,13 @@ class box4 extends StatelessWidget {
                 Container(
                   // width: 80,
                   // height: 80,
-                  child: Icon(
-                    Icons.book,
-                    color: colorScheme.primary,
-                    size: 80,
-                  ),
+                  // child: Icon(
+                  //   Icons.book,
+                  //   color: colorScheme.primary,
+                  //   size: 80,
+                  // ),
+                  child:
+                      Lottie.asset('assets/lottie/74945-paper-airplane.json'),
                 ),
                 MarkdownBody(
                   data: markdownContent2,
