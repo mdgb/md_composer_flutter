@@ -78,7 +78,7 @@ class _GalleryPageState extends State<GalleryPage> {
                   child: InkWell(
                     onTap: () {
                       GoRouter.of(context)
-                          .go('/gallery_detail', extra: galleryItems[index]);
+                          .push('/gallery_detail', extra: galleryItems[index]);
                     },
                     child: Image(image: NetworkImage(galleryItems[index].url)),
                   ),

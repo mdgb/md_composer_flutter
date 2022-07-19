@@ -27,7 +27,7 @@ class _DrawerExpandableComponentState
   _DrawerExpandableComponentState() {
     List<CDM> items = [
       const CDM(
-          title: 'Home', icon: Icons.subscriptions, url: '/root', submenus: []),
+          title: 'Home', icon: Icons.subscriptions, url: '/home', submenus: []),
       const CDM(
           title: 'Responsive page',
           icon: Icons.subscriptions,
@@ -90,6 +90,13 @@ class _DrawerExpandableComponentState
             icon: Icons.text_fields_outlined,
             submenus: [],
             url: '/gallery'),
+      ]),
+      const CDM(title: 'Animations', icon: Icons.animation, submenus: [
+        CDM(
+            title: 'Animated Drawer 1',
+            icon: Icons.draw,
+            submenus: [],
+            url: '/animated_drawer_1'),
       ]),
       CDM(
           title: 'Settings',
@@ -161,56 +168,60 @@ class _DrawerExpandableComponentState
       children: [
         Container(
           width: drawerWidth,
-          child: InkWell(
-              child: Container(
-                padding: EdgeInsets.only(
-                    top: 4, right: 4, bottom: 4, left: (8.0 * depth) + 8),
-                decoration: BoxDecoration(
-                  color: isSelected ? Colors.white10 : Colors.transparent,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
+          child: Material(
+            color: Colors.transparent,
+            child: InkWell(
+                child: Container(
+                  padding: EdgeInsets.only(
+                      top: 4, right: 4, bottom: 4, left: (8.0 * depth) + 8),
+                  decoration: BoxDecoration(
+                    color: isSelected ? Colors.white10 : Colors.transparent,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(
+                            item.icon,
+                            color:
+                                Theme.of(context).colorScheme.onInverseSurface,
+                          ),
+                          SizedBox(width: 8),
+                          Text(
+                            item.title,
+                            style: TextStyle(
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .onInverseSurface),
+                          ),
+                        ],
+                      ),
+                      if (item.submenus.length > 0) ...[
                         Icon(
-                          item.icon,
-                          color: Theme.of(context).colorScheme.onInverseSurface,
-                        ),
-                        SizedBox(width: 8),
-                        Text(
-                          item.title,
-                          style: TextStyle(
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .onInverseSurface),
-                        ),
-                      ],
-                    ),
-                    if (item.submenus.length > 0) ...[
-                      Icon(
-                          isSelected
-                              ? Icons.arrow_drop_up
-                              : Icons.arrow_drop_down,
-                          color: textColor)
-                    ]
-                  ],
+                            isSelected
+                                ? Icons.arrow_drop_up
+                                : Icons.arrow_drop_down,
+                            color: textColor)
+                      ]
+                    ],
+                  ),
                 ),
-              ),
-              onTap: () {
-                setState(() {
-                  selectedPath == path
-                      ? selectedPath = ''
-                      : selectedPath = path;
-                });
-                if (item.action != null) {
-                  print('EXECUTE ACTION');
-                  item.action!();
-                }
-                if (item.url != null) {
-                  GoRouter.of(context).go(item.url.toString());
-                }
-              }),
+                onTap: () {
+                  setState(() {
+                    selectedPath == path
+                        ? selectedPath = ''
+                        : selectedPath = path;
+                  });
+                  if (item.action != null) {
+                    print('EXECUTE ACTION');
+                    item.action!();
+                  }
+                  if (item.url != null) {
+                    GoRouter.of(context).go(item.url.toString());
+                  }
+                }),
+          ),
         ),
         Container(
           child:

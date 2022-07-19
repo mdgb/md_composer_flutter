@@ -68,7 +68,8 @@ class _PostsState extends State<Posts> {
                     subtitle: Text(capitalize(posts[i].body.toString())),
                     trailing: Icon(Icons.arrow_circle_right),
                     onTap: () {
-                      GoRouter.of(context).go('/post_detail', extra: posts[i]);
+                      GoRouter.of(context)
+                          .push('/post_detail', extra: posts[i]);
                     },
                   ),
                 ],

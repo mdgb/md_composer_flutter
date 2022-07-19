@@ -20,7 +20,7 @@ class GalleryDetailPage extends StatelessWidget {
       //         GoRouter.of(context).pop();
       //         return;
       //       }
-      //       GoRouter.of(context).go('/gallery');
+      //       GoRouter.of(context).push('/gallery');
       //     },
       //   ),
       //   title: Text(capitalize(galleryItem.title)),
@@ -31,11 +31,13 @@ class GalleryDetailPage extends StatelessWidget {
           child: Material(
             child: InkWell(
               onTap: () {
+                print('CAN POP: ${context.canPop()}');
                 if (GoRouter.of(context).canPop()) {
                   GoRouter.of(context).pop();
                   return;
                 }
-                GoRouter.of(context).go('/gallery');
+                context.pop();
+                // GoRouter.of(context).push('/gallery');
               },
               child: Image(
                 image: NetworkImage(galleryItem.url),

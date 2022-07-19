@@ -21,6 +21,17 @@ class LoginPage extends ConsumerWidget {
     final model = ref.read(authViewModelProvider);
     return LoadingLayer(
         child: Scaffold(
+      appBar: AppBar(
+        leading: InkWell(
+            child: Icon(Icons.arrow_back),
+            onTap: () {
+              if (GoRouter.of(context).canPop()) {
+                GoRouter.of(context).pop();
+              } else {
+                GoRouter.of(context).go('/');
+              }
+            }),
+      ),
       body: Center(
         child: SingleChildScrollView(
           child: Padding(

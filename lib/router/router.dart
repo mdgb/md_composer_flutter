@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:md_composer_flutter/ui/pages/animations/animated_drawer_1.dart';
 import 'package:md_composer_flutter/ui/pages/api_contents/gallery_detail_page.dart';
 import 'package:md_composer_flutter/ui/pages/api_contents/gallery_page.dart';
 import 'package:md_composer_flutter/ui/pages/api_contents/post_details_page.dart';
@@ -167,6 +168,11 @@ class RouterNotifier extends ChangeNotifier {
           path: '/gallery_detail',
           builder: (context, state) =>
               GalleryDetailPage(galleryItem: state.extra! as GalleryItem),
+        ),
+        GoRoute(
+          name: 'animated_drawer_1',
+          path: '/animated_drawer_1',
+          builder: (context, state) => AnimatedDrawer1(),
         ),
         // forwarding routes to remove the need to put the 'tab' param in the code
         // GoRoute(
