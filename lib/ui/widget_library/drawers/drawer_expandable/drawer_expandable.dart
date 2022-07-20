@@ -29,6 +29,8 @@ class _DrawerExpandableComponentState
       const CDM(
           title: 'Home', icon: Icons.subscriptions, url: '/home', submenus: []),
       const CDM(
+          title: 'Splash', icon: Icons.subscriptions, url: '/', submenus: []),
+      const CDM(
           title: 'Responsive page',
           icon: Icons.subscriptions,
           url: '/responsive_page',
@@ -97,6 +99,11 @@ class _DrawerExpandableComponentState
             icon: Icons.draw,
             submenus: [],
             url: '/animated_drawer_1'),
+        CDM(
+            title: 'Animated Carousel',
+            icon: Icons.draw,
+            submenus: [],
+            url: '/animated_carousel_1'),
       ]),
       CDM(
           title: 'Settings',

@@ -82,14 +82,19 @@ class _AnimatedDrawer1State extends ConsumerState<AnimatedDrawer1>
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: _animationController,
-      child: GalleryPage(), // OUT OF RERENDERING
+      child: Posts(), // OUT OF RERENDERING
       builder: (context, Widget? child) {
-        double scale = 1 - (_animationController.value * 0.2);
+        // double scale = 1 - (_animationController.value * 0.2);
+        double pageWidth = MediaQuery.of(context).size.width;
+        double pageHeight = MediaQuery.of(context).size.height;
+        double scaleBasedOnWidth = (pageWidth - maxSlide) / pageWidth;
+        double scale =
+            1 - (_animationController.value * (1 - scaleBasedOnWidth));
         double rotateY = 0 + (_animationController.value * 0.01);
         double translationValuesX = maxSlide * _animationController.value;
-        double translationValuesY = MediaQuery.of(context).size.height *
-            0.1 *
-            _animationController.value;
+        double translationValuesY = _animationController.value *
+            (pageHeight - (pageHeight * scaleBasedOnWidth)) /
+            2;
 
         return GestureDetector(
           onHorizontalDragStart: _onDragStart,
@@ -122,7 +127,7 @@ class _AnimatedDrawer1State extends ConsumerState<AnimatedDrawer1>
                 transform: Matrix4.translationValues(
                     translationValuesX, translationValuesY, 0)
                   ..scale(scale)
-                  ..setEntry(3, 2, 0.02)
+                  ..setEntry(3, 2, 0.01)
                   ..rotateY(rotateY),
                 child: Scaffold(
                   appBar: AppBar(

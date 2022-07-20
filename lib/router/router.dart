@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:md_composer_flutter/ui/pages/animations/animated_carousel_1.dart';
 import 'package:md_composer_flutter/ui/pages/animations/animated_drawer_1.dart';
 import 'package:md_composer_flutter/ui/pages/api_contents/gallery_detail_page.dart';
 import 'package:md_composer_flutter/ui/pages/api_contents/gallery_page.dart';
@@ -90,9 +91,25 @@ class RouterNotifier extends ChangeNotifier {
           name: homeRouteName,
           path: '/home',
           pageBuilder: (context, state) {
-            return MaterialPage<void>(
+            return CustomTransitionPage<void>(
               key: state.pageKey,
               child: BaseTemplate(page: const HomePage(), pageTitle: 'Home'),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) =>
+                      FadeTransition(opacity: animation, child: child),
+            );
+          },
+        ),
+        GoRoute(
+          name: 'animatedCarousel',
+          path: '/animated_carousel_1',
+          pageBuilder: (context, state) {
+            return CustomTransitionPage<void>(
+              key: state.pageKey,
+              child: AnimatedCarousel(),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) =>
+                      FadeTransition(opacity: animation, child: child),
             );
           },
         ),
