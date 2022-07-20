@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:md_composer_flutter/ui/pages/api_contents/gallery_page.dart';
+import 'package:md_composer_flutter/ui/pages/api_contents/posts_page.dart';
 import 'package:md_composer_flutter/ui/widget_library/drawers/drawer_expandable/drawer_expandable.dart';
 
 class AnimatedDrawer1 extends ConsumerStatefulWidget {
@@ -134,7 +135,7 @@ class _AnimatedDrawer1State extends ConsumerState<AnimatedDrawer1>
                     title: const Text('Animated Drawer'),
                   ),
                   body: Container(
-                    child: GalleryPage(),
+                    child: Posts(),
                   ),
                 ),
               ),
