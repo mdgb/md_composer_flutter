@@ -29,11 +29,11 @@ class Posts extends StatefulWidget {
 
 class _PostsState extends State<Posts> {
   List<Post> posts = [];
-  final GlobalKey<_PostsState> _postsKey = new GlobalKey<_PostsState>();
 
   final url = Uri.parse('https://jsonplaceholder.typicode.com/posts');
   @override
   void initState() {
+    print('INITSTATE POSTS');
     super.initState();
     getPostsFromAPI();
   }
@@ -52,7 +52,6 @@ class _PostsState extends State<Posts> {
   Widget build(BuildContext context) {
     print('BUILD POSTS');
     return ListView(
-      key: _postsKey,
       padding: EdgeInsets.all(16),
       controller: ScrollController(),
       children: [

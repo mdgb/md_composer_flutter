@@ -82,6 +82,7 @@ class _AnimatedDrawer1State extends ConsumerState<AnimatedDrawer1>
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: _animationController,
+      child: GalleryPage(), // OUT OF RERENDERING
       builder: (context, Widget? child) {
         double scale = 1 - (_animationController.value * 0.2);
         double rotateY = 0 + (_animationController.value * 0.01);
@@ -137,9 +138,8 @@ class _AnimatedDrawer1State extends ConsumerState<AnimatedDrawer1>
                     title: const Text('Animated Drawer'),
                   ),
                   body: Container(
-                    // key: Key('posts'),
-                    color: Colors.blueGrey,
-                    // child: Posts(),
+                    key: Key('posts'), // color: Colors.blueGrey,
+                    child: child,
                   ),
                 ),
               ),
