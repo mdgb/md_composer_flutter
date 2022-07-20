@@ -95,6 +95,7 @@ class _AnimatedDrawer1State extends ConsumerState<AnimatedDrawer1>
           onHorizontalDragUpdate: _onDragUpdate,
           onHorizontalDragEnd: _onDragEnd,
           child: Stack(
+            key: Key('animated'),
             children: [
               GestureDetector(
                 onTap: () {
@@ -116,6 +117,7 @@ class _AnimatedDrawer1State extends ConsumerState<AnimatedDrawer1>
                 ),
               ),
               Transform(
+                key: Key('animated2'),
                 transform: Matrix4.translationValues(
                     translationValuesX, translationValuesY, 0)
                   ..scale(scale)
@@ -135,7 +137,9 @@ class _AnimatedDrawer1State extends ConsumerState<AnimatedDrawer1>
                     title: const Text('Animated Drawer'),
                   ),
                   body: Container(
-                    child: Posts(),
+                    // key: Key('posts'),
+                    color: Colors.blueGrey,
+                    // child: Posts(),
                   ),
                 ),
               ),
@@ -144,5 +148,11 @@ class _AnimatedDrawer1State extends ConsumerState<AnimatedDrawer1>
         );
       },
     );
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
   }
 }
