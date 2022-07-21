@@ -104,6 +104,11 @@ class _DrawerExpandableComponentState
             icon: Icons.draw,
             submenus: [],
             url: '/animated_carousel_1'),
+        CDM(
+            title: 'Glass Effect',
+            icon: Icons.draw,
+            submenus: [],
+            url: '/glass_effect'),
       ]),
       CDM(
           title: 'Settings',

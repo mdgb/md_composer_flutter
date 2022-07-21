@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:md_composer_flutter/providers/color_scheme_provider.dart';
 import 'package:md_composer_flutter/ui/pages/api_contents/gallery_page.dart';
 import 'package:md_composer_flutter/ui/pages/api_contents/posts_page.dart';
 import 'package:md_composer_flutter/ui/widget_library/drawers/drawer_expandable/drawer_expandable.dart';
@@ -80,9 +81,10 @@ class _AnimatedDrawer1State extends ConsumerState<AnimatedDrawer1>
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = ref.watch(colorSchemeProvider);
     return AnimatedBuilder(
       animation: _animationController,
-      child: Posts(), // OUT OF RERENDERING
+      child: GalleryPage(), // OUT OF RERENDERING
       builder: (context, Widget? child) {
         // double scale = 1 - (_animationController.value * 0.2);
         double pageWidth = MediaQuery.of(context).size.width;
@@ -116,7 +118,7 @@ class _AnimatedDrawer1State extends ConsumerState<AnimatedDrawer1>
                     ),
                     Expanded(
                       child: Container(
-                        color: Color.fromARGB(255, 16, 62, 108),
+                        color: colorScheme.primary,
                       ),
                     )
                   ],
