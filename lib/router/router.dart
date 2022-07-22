@@ -9,6 +9,7 @@ import 'package:md_composer_flutter/ui/pages/api_contents/gallery_page.dart';
 import 'package:md_composer_flutter/ui/pages/api_contents/post_details_page.dart';
 import 'package:md_composer_flutter/ui/pages/api_contents/posts_page.dart';
 import 'package:md_composer_flutter/ui/pages/factory_test/factory_test_widget.dart';
+import 'package:md_composer_flutter/ui/pages/factory_test/json_dynamic_widget.dart';
 import 'package:md_composer_flutter/ui/pages/forms/forms_page.dart';
 import 'package:md_composer_flutter/ui/pages/reponsive_test_page/reponsive_test_page.dart';
 import 'package:md_composer_flutter/ui/pages/slivers_page/sliver_sticky.dart';
@@ -148,6 +149,15 @@ class RouterNotifier extends ChangeNotifier {
             key: state.pageKey,
             child: BaseTemplate(
                 page: FactoryTestWidgets(), pageTitle: 'Factory Test'),
+          ),
+        ),
+        GoRoute(
+          name: 'json_dynamic_widget',
+          path: '/json_dynamic_widget',
+          pageBuilder: (context, state) => MaterialPage<void>(
+            key: state.pageKey,
+            child: BaseTemplate(
+                page: JsonDynamicWidget(), pageTitle: 'Json Dynamic Widget'),
           ),
         ),
         GoRoute(

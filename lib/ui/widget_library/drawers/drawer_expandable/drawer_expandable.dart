@@ -71,9 +71,21 @@ class _DrawerExpandableComponentState
           title: 'Typography', icon: Icons.font_download, url: '/typography'),
       const CDM(title: 'Forms', icon: Icons.input, url: '/forms'),
       const CDM(
-          title: 'Factory Test',
-          icon: Icons.account_tree_outlined,
-          url: '/factory'),
+        title: 'Factory Tests',
+        icon: Icons.account_tree_outlined,
+        submenus: [
+          CDM(
+            title: 'Static Factory',
+            icon: Icons.account_tree_outlined,
+            url: '/factory',
+          ),
+          CDM(
+            title: 'Json Dynamic Widget',
+            icon: Icons.account_tree_outlined,
+            url: '/json_dynamic_widget',
+          ),
+        ],
+      ),
       const CDM(title: 'Slivers', icon: Icons.arrow_downward, submenus: [
         CDM(
             title: 'Sticky box',

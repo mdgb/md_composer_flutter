@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class FactoryTestWidgets extends StatelessWidget {
@@ -20,6 +21,10 @@ class FactoryTestWidgets extends StatelessWidget {
       'widgetName': 'widgetB',
       // 'props': {'text': 'Hello from Third'}
     },
+    {
+      'widgetName': 'widgetC',
+      // 'props': {'text': 'Hello from Third'}
+    },
   ];
 
   @override
@@ -37,7 +42,7 @@ class FactoryTestWidgets extends StatelessWidget {
         children: widgets,
       ),
     );
-    return FactoryWidget(widgetName: 'widgetA', props: {'text': 'Hello'});
+    // return FactoryWidget(widgetName: 'widgetA', props: {'text': 'Hello'});
   }
 }
 
@@ -52,6 +57,7 @@ class FactoryWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     if (widgetName == 'widgetA') return MyWidgetA(text: props?['text']);
     if (widgetName == 'widgetB') return MyWidgetB();
+    if (widgetName == 'widgetC') return MyWidgetC();
     return Text('NO WIDGET FOUND');
   }
 }
@@ -73,5 +79,14 @@ class MyWidgetB extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text('MyWidget B');
+  }
+}
+
+class MyWidgetC extends StatelessWidget {
+  const MyWidgetC({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text('MyWidget C  $context');
   }
 }
